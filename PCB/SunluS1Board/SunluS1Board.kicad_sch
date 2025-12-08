@@ -614,6 +614,263 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:Thermistor_NTC"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TH"
+				(at -4.445 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Thermistor_NTC"
+				(at 3.175 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Temperature dependent resistor, negative temperature coefficient"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "thermistor NTC resistor sensor RTD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*NTC* *Thermistor* PIN?ARRAY* bornier* *Terminal?Block* R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Thermistor_NTC_0_1"
+				(arc
+					(start -3.175 2.413)
+					(mid -3.0506 2.3165)
+					(end -3.048 2.159)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.048 2.794)
+					(mid -2.9736 2.9736)
+					(end -2.794 3.048)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.794 3.048)
+					(mid -2.6144 2.9736)
+					(end -2.54 2.794)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.794 2.54)
+					(mid -2.9736 2.6144)
+					(end -3.048 2.794)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.794 1.905)
+					(mid -2.9736 1.9794)
+					(end -3.048 2.159)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.54 2.159)
+					(mid -2.6144 1.9794)
+					(end -2.794 1.905)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.159 2.794)
+					(mid -2.434 2.5608)
+					(end -2.794 2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 2.159) (xy -2.54 2.794)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -3.683) (xy -2.54 -1.397) (xy -2.794 -2.159) (xy -2.286 -2.159) (xy -2.54 -1.397) (xy -2.54 -1.651)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 2.54) (xy -1.778 1.524) (xy 1.778 -1.524) (xy 1.778 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -1.397) (xy -1.778 -3.683) (xy -2.032 -2.921) (xy -1.524 -2.921) (xy -1.778 -3.683)
+						(xy -1.778 -3.429)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Thermistor_NTC_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "MCU_ST_STM32C0:STM32C011F4Px"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2266,6 +2523,18 @@
 		(uuid "45e60905-4b5d-4ba7-a766-11747c6a32ed")
 	)
 	(junction
+		(at 85.09 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98424b89-5555-409c-acc0-fb05459da8c1")
+	)
+	(junction
+		(at 105.41 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b4b822aa-0f3f-4c34-bc06-bdbe39a0e703")
+	)
+	(junction
 		(at 34.29 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2342,6 +2611,16 @@
 			(type default)
 		)
 		(uuid "426773c2-9d61-4a4e-b998-4ea27fc02b25")
+	)
+	(wire
+		(pts
+			(xy 114.3 140.97) (xy 105.41 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "592f826f-32ce-4b1b-aa9b-65c72c41f113")
 	)
 	(wire
 		(pts
@@ -2465,6 +2744,16 @@
 	)
 	(wire
 		(pts
+			(xy 91.44 140.97) (xy 85.09 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c60b4056-71a6-439d-90c4-8bc62bc283c8")
+	)
+	(wire
+		(pts
 			(xy 34.29 41.91) (xy 34.29 48.26)
 		)
 		(stroke
@@ -2557,7 +2846,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 180.5433 106.68 0)
 			(effects
@@ -2579,7 +2868,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 180.3014 111.76 0)
 			(effects
@@ -2601,7 +2890,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 180.6642 114.3 0)
 			(effects
@@ -2623,7 +2912,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 179.0314 101.6 0)
 			(effects
@@ -2645,7 +2934,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 180.6038 83.82 0)
 			(effects
@@ -2667,7 +2956,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acba")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 177.8218 86.36 0)
 			(effects
@@ -2689,7 +2978,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acbb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 176.9147 93.98 0)
 			(effects
@@ -2711,7 +3000,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acbc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 176.9147 96.52 0)
 			(effects
@@ -2733,7 +3022,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acbd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 179.0314 99.06 0)
 			(effects
@@ -2755,7 +3044,7 @@
 			)
 			(justify left)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acbe")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 184.15 82.6491 90)
 			(effects
@@ -2777,7 +3066,7 @@
 			)
 			(justify right)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acbf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 129.1553 96.52 0)
 			(effects
@@ -2799,7 +3088,7 @@
 			)
 			(justify right)
 		)
-		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acb4")
+		(uuid "34b4a73d-21b7-4be6-9907-1f8f9984acc0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 128.1272 83.82 0)
 			(effects
@@ -2868,6 +3157,50 @@
 		(uuid "db8b5d3c-8fc8-42b4-9052-a5710b2dcee1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 192.1547 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "heatNTC"
+		(shape input)
+		(at 91.44 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f350f8af-b368-4f0d-9ad0-60a8f3306333")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 102.1056 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "airNTC"
+		(shape input)
+		(at 114.3 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fc2ad6bf-dcf5-4fa8-99c3-d405f549907f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 123.3933 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3075,6 +3408,142 @@
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 105.41 148.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0cf2700f-4a90-43fd-9b7c-3966c1c45772")
+		(property "Reference" "#PWR011"
+			(at 105.41 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 105.41 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 105.41 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 105.41 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 105.41 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "11152c57-161e-4835-8792-1dd3fd55b8a5")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor_NTC")
+		(at 85.09 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "224516b1-0f37-4f63-a01f-d1d0af906380")
+		(property "Reference" "TH1"
+			(at 87.63 143.8274 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 87.63 146.3674 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 85.09 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 85.09 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor, negative temperature coefficient"
+			(at 85.09 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d508e2fe-e31f-4cfd-ab06-86296212ab92")
+		)
+		(pin "1"
+			(uuid "0645017e-a6f7-43dc-a0db-a0c26e644b23")
+		)
+		(instances
+			(project ""
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "TH1")
 					(unit 1)
 				)
 			)
@@ -3345,6 +3814,72 @@
 			(project ""
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 85.09 148.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5864a18e-f898-4547-99fe-a6528ad68e9c")
+		(property "Reference" "#PWR012"
+			(at 85.09 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 85.09 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 85.09 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 85.09 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 85.09 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9da83634-eff3-4348-a80c-f21c65069b22")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -3756,6 +4291,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Thermistor_NTC")
+		(at 105.41 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "93afc228-7cf8-40b1-b55b-7d6493777bd3")
+		(property "Reference" "TH2"
+			(at 107.95 143.8274 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Thermistor_NTC"
+			(at 107.95 146.3674 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 105.41 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 105.41 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor, negative temperature coefficient"
+			(at 105.41 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "42d1b24c-57b0-4ca7-8042-af2ac5279aed")
+		)
+		(pin "1"
+			(uuid "ec642ee3-3a09-4639-a237-d6e0a31ff5cd")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "TH2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 171.45 40.64 270)
 		(unit 1)
@@ -3817,6 +4422,76 @@
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 105.41 137.16 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b3a5542b-779a-4c97-b9a8-d1c3d7d3c8cd")
+		(property "Reference" "R8"
+			(at 107.95 135.8899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 107.95 138.4299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 103.632 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 105.41 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 105.41 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6e6b4e34-b21e-4631-a934-bc97f80123a2")
+		)
+		(pin "1"
+			(uuid "f90bb93b-39e3-4d98-82cd-7fbabfaeef7c")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -4299,6 +4974,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 85.09 133.35 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d905b09f-19c4-4f5a-b4bc-b211283189ed")
+		(property "Reference" "#PWR08"
+			(at 85.09 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 85.09 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 85.09 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 85.09 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 85.09 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c1dc2796-466d-46f5-ae49-a3a9601b8547")
+		)
+		(instances
+			(project ""
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 195.58 88.9 180)
 		(unit 1)
@@ -4446,6 +5187,142 @@
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 85.09 137.16 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ea3735fc-cafd-4903-80bb-4a9a3b77d77a")
+		(property "Reference" "R7"
+			(at 87.63 135.8899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 87.63 138.4299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.312 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 85.09 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 85.09 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "396f16a1-8468-4ce9-8991-12023a9edeb9")
+		)
+		(pin "1"
+			(uuid "28dd10f2-1b74-4008-8cb9-4fdca2326f56")
+		)
+		(instances
+			(project ""
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 105.41 133.35 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ef26d325-87b8-45e5-9910-c3d111dbb09a")
+		(property "Reference" "#PWR010"
+			(at 105.41 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 105.41 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 105.41 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 105.41 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 105.41 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e1e1c265-7271-44a1-985d-ce28785c2e48")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
