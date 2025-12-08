@@ -63,12 +63,12 @@ void Error_Handler(void);
 #define heater_GPIO_Port GPIOA
 #define fan_Pin GPIO_PIN_1
 #define fan_GPIO_Port GPIOA
+#define led_Pin GPIO_PIN_2
+#define led_GPIO_Port GPIOA
 #define b1_Pin GPIO_PIN_4
 #define b1_GPIO_Port GPIOA
 #define b2_Pin GPIO_PIN_5
 #define b2_GPIO_Port GPIOA
-#define led_Pin GPIO_PIN_6
-#define led_GPIO_Port GPIOA
 #define airNTC_Pin GPIO_PIN_11
 #define airNTC_GPIO_Port GPIOA
 #define heatNTC_Pin GPIO_PIN_12
