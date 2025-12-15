@@ -3543,6 +3543,12 @@
 		(uuid "7e15add6-a5ad-4ba7-b137-e35fe623a5af")
 	)
 	(junction
+		(at 228.6 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8acef0c2-b812-4369-b767-550f05af7f4f")
+	)
+	(junction
 		(at 130.81 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3595,6 +3601,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e5478149-4bf5-4266-97ab-fa81da1fffa2")
+	)
+	(junction
+		(at 243.84 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f5c6b58c-db11-4492-a69f-20370a8f70a3")
 	)
 	(no_connect
 		(at 252.73 25.4)
@@ -3770,6 +3782,26 @@
 	)
 	(wire
 		(pts
+			(xy 232.41 20.32) (xy 228.6 20.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38dbbc41-f61a-4ce3-864e-d42fd4cb8a0b")
+	)
+	(wire
+		(pts
+			(xy 228.6 20.32) (xy 228.6 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f41e1d7-38e6-42bb-abab-7cf8c9cad2d5")
+	)
+	(wire
+		(pts
 			(xy 80.01 168.91) (xy 80.01 172.72)
 		)
 		(stroke
@@ -3797,6 +3829,16 @@
 			(type default)
 		)
 		(uuid "48536a0a-3bca-4c1f-9496-1ba368c6142f")
+	)
+	(wire
+		(pts
+			(xy 243.84 30.48) (xy 240.03 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49af908d-b8d0-4036-b645-23c4b0803d4d")
 	)
 	(wire
 		(pts
@@ -3980,7 +4022,7 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 30.48) (xy 240.03 30.48)
+			(xy 252.73 30.48) (xy 243.84 30.48)
 		)
 		(stroke
 			(width 0)
@@ -4180,6 +4222,16 @@
 	)
 	(wire
 		(pts
+			(xy 243.84 20.32) (xy 243.84 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1d6ce77-b8a1-4c88-bdb2-96b6074c2395")
+	)
+	(wire
+		(pts
 			(xy 171.45 40.64) (xy 171.45 46.99)
 		)
 		(stroke
@@ -4227,6 +4279,16 @@
 			(type default)
 		)
 		(uuid "f5b81b75-f507-4678-a5e0-d374dfbd761b")
+	)
+	(wire
+		(pts
+			(xy 240.03 20.32) (xy 243.84 20.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f686d165-00b0-4cf4-bb6b-700f7be47af6")
 	)
 	(wire
 		(pts
@@ -5808,6 +5870,74 @@
 			(project ""
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "TH1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 236.22 20.32 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(fields_autoplaced yes)
+		(uuid "31078086-c118-42a2-a88d-b9023c7e1faa")
+		(property "Reference" "R13"
+			(at 236.22 13.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22"
+			(at 236.22 16.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 236.22 18.542 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 236.22 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 236.22 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "28e985e5-12e3-47b7-a94c-519a615fabbf")
+		)
+		(pin "1"
+			(uuid "70ffcc7c-83de-4a0b-a5e8-0c216c67efeb")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "R13")
 					(unit 1)
 				)
 			)
