@@ -3298,6 +3298,12 @@
 		(uuid "0312f3d9-6fc8-497b-87ee-e889c6340b69")
 	)
 	(junction
+		(at 269.24 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0420acfc-26f8-4340-a506-c2c267498fcb")
+	)
+	(junction
 		(at 34.29 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3344,6 +3350,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "45e60905-4b5d-4ba7-a766-11747c6a32ed")
+	)
+	(junction
+		(at 269.24 25.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "47a61f24-b7d7-4b79-b79e-c351788a7eb9")
 	)
 	(junction
 		(at 236.22 109.22)
@@ -3554,6 +3566,16 @@
 			(type default)
 		)
 		(uuid "23d80272-9925-4999-9c05-21317376a881")
+	)
+	(wire
+		(pts
+			(xy 269.24 25.4) (xy 274.32 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2718cd91-fbdf-4ceb-ba10-3865d98307ad")
 	)
 	(wire
 		(pts
@@ -3857,6 +3879,16 @@
 	)
 	(wire
 		(pts
+			(xy 262.89 25.4) (xy 269.24 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a25baf64-3d25-4771-b3ca-c5bf6774de13")
+	)
+	(wire
+		(pts
 			(xy 241.3 91.44) (xy 246.38 91.44)
 		)
 		(stroke
@@ -3947,6 +3979,16 @@
 	)
 	(wire
 		(pts
+			(xy 262.89 33.02) (xy 269.24 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc5a68aa-d06d-42ec-84d1-30ec98995ace")
+	)
+	(wire
+		(pts
 			(xy 34.29 64.77) (xy 34.29 62.23)
 		)
 		(stroke
@@ -3954,6 +3996,16 @@
 			(type default)
 		)
 		(uuid "cc88dbf3-54cc-4cd5-8b64-1c5166411a15")
+	)
+	(wire
+		(pts
+			(xy 274.32 33.02) (xy 269.24 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d924529a-92c4-46c0-abc0-8c8d92872868")
 	)
 	(wire
 		(pts
@@ -5585,6 +5637,76 @@
 			(project ""
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "TH1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 274.32 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "320d13e9-6b0b-41b4-9a6d-f1467067d144")
+		(property "Reference" "C14"
+			(at 278.13 27.9399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 278.13 30.4799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 275.2852 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 274.32 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 274.32 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f96f4f39-1c07-4362-b796-4beb0e320cb3")
+		)
+		(pin "2"
+			(uuid "e380e43d-f4d6-4924-bbf8-81cb8a20408d")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "C14")
 					(unit 1)
 				)
 			)
@@ -9510,6 +9632,138 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 269.24 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dda268df-b406-4182-be1b-83815f24f41c")
+		(property "Reference" "#PWR040"
+			(at 269.24 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 269.24 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 269.24 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 269.24 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 269.24 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fd154ed2-af0e-4e84-a8a5-4a33f0885828")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "#PWR040")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 269.24 25.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e20e7100-00eb-471b-8ae1-edb4eb1d8361")
+		(property "Reference" "#PWR039"
+			(at 269.24 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 266.7 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 269.24 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 269.24 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 269.24 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "70bd28c7-f0d8-4d83-b6fe-7ca0b754726c")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "#PWR039")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
 		(at 85.09 172.72 0)
 		(unit 1)
@@ -10254,6 +10508,76 @@
 			(project ""
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 262.89 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fa408be3-e662-414d-af26-f32d9d8855a3")
+		(property "Reference" "C13"
+			(at 266.7 27.9399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF"
+			(at 266.7 30.4799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 263.8552 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 262.89 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 262.89 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6832860f-2e9e-458b-89e3-89896b3dfda7")
+		)
+		(pin "2"
+			(uuid "dd36e231-c0f9-4d23-8060-6c569f1b1a55")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "C13")
 					(unit 1)
 				)
 			)
