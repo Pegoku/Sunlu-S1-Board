@@ -3607,12 +3607,6 @@
 		(uuid "04e5890a-4ac4-4d4f-8cd8-891c2f6b2699")
 	)
 	(junction
-		(at 26.67 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "05f26975-8b05-435a-9c94-0949f39b4523")
-	)
-	(junction
 		(at 171.45 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3661,22 +3655,10 @@
 		(uuid "47a61f24-b7d7-4b79-b79e-c351788a7eb9")
 	)
 	(junction
-		(at 41.91 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "593215f3-f519-4113-aa5f-dcc866680484")
-	)
-	(junction
 		(at 236.22 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "69d72621-6dba-4a4e-ac6b-892372df953b")
-	)
-	(junction
-		(at 41.91 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6e47c75f-1095-4d34-9d99-894037da023b")
 	)
 	(junction
 		(at 149.86 147.32)
@@ -3701,6 +3683,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8acef0c2-b812-4369-b767-550f05af7f4f")
+	)
+	(junction
+		(at 26.67 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8d366aa6-5891-4a11-81b0-c360ac200c7f")
 	)
 	(junction
 		(at 130.81 83.82)
@@ -3739,22 +3727,34 @@
 		(uuid "d6a6a00d-dc9d-4613-9915-26338ad66f90")
 	)
 	(junction
+		(at 41.91 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dc34068b-5cd8-4aa9-98f8-223223add5ee")
+	)
+	(junction
+		(at 41.91 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "df061cf8-49b0-4f1b-9f20-968d6f984eae")
+	)
+	(junction
 		(at 171.45 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e5478149-4bf5-4266-97ab-fa81da1fffa2")
 	)
 	(junction
-		(at 34.29 113.03)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ed4a0a96-2dff-4efc-a5f8-ebdf2b5acd58")
-	)
-	(junction
 		(at 243.84 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f5c6b58c-db11-4492-a69f-20370a8f70a3")
+	)
+	(junction
+		(at 34.29 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fb6842c2-ed6e-4000-9e35-b5f15183b88a")
 	)
 	(no_connect
 		(at 252.73 25.4)
@@ -4120,6 +4120,16 @@
 	)
 	(wire
 		(pts
+			(xy 41.91 102.87) (xy 41.91 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "678444f5-2206-4cf4-bb37-251eb89a5660")
+	)
+	(wire
+		(pts
 			(xy 266.7 101.6) (xy 273.05 101.6)
 		)
 		(stroke
@@ -4250,16 +4260,6 @@
 	)
 	(wire
 		(pts
-			(xy 26.67 97.79) (xy 26.67 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "96c336fa-2c1b-462e-9cbf-734e1965928d")
-	)
-	(wire
-		(pts
 			(xy 34.29 119.38) (xy 34.29 116.84)
 		)
 		(stroke
@@ -4270,7 +4270,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 102.87) (xy 41.91 97.79)
+			(xy 41.91 97.79) (xy 41.91 102.87)
 		)
 		(stroke
 			(width 0)
@@ -4307,16 +4307,6 @@
 			(type default)
 		)
 		(uuid "ad02fb6c-b349-481f-9d0d-0faacb61cd67")
-	)
-	(wire
-		(pts
-			(xy 41.91 105.41) (xy 41.91 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ae7fad51-264f-40bf-83cb-c3e95918dd87")
 	)
 	(wire
 		(pts
@@ -4451,6 +4441,16 @@
 	(wire
 		(pts
 			(xy 26.67 102.87) (xy 26.67 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6310bc2-8386-4896-b272-a6ce0b99cbc7")
+	)
+	(wire
+		(pts
+			(xy 26.67 97.79) (xy 26.67 102.87)
 		)
 		(stroke
 			(width 0)
@@ -5889,7 +5889,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 267.6652 109.22 0)
 			(effects
 				(font
@@ -6532,6 +6532,103 @@
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "easyeda2kicad:SIA440DJ-T1-GE3")
+		(at 34.29 105.41 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4f40d0d3-8d9c-4378-ad47-0597e2c51e37")
+		(property "Reference" "Q1"
+			(at 32.1467 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SIA440DJ-T1-GE3"
+			(at 53.594 94.742 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:SC-70-6L_L2.0-W2.0-P0.65-BL"
+			(at 34.29 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 34.29 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 34.29 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C727349"
+			(at 34.29 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "5a515aa1-69eb-4990-98c1-4848fb2cfab8")
+		)
+		(pin "6"
+			(uuid "b66d0520-4666-4da5-8f9f-2dea653437d4")
+		)
+		(pin "5"
+			(uuid "c29c38ca-356a-413f-9159-a8b3fed83cdc")
+		)
+		(pin "7"
+			(uuid "7f9f8d70-ee47-4582-be83-25607d1c2492")
+		)
+		(pin "1"
+			(uuid "311287c2-8b2c-47f8-9b18-7eca70eedc00")
+		)
+		(pin "8"
+			(uuid "8a27483f-51d0-4296-baf7-09d543401471")
+		)
+		(pin "3"
+			(uuid "d831ad73-cf74-47c1-a1ba-4e7a6816bc8d")
+		)
+		(pin "2"
+			(uuid "da99e527-c5d5-4c97-b637-5f89a0c2149c")
+		)
+		(instances
+			(project "SunluS1Board"
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "Q1")
 					(unit 1)
 				)
 			)
@@ -9063,103 +9160,6 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:SIA440DJ-T1-GE3")
-		(at 34.29 105.41 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c25ea7d0-7a3d-4b41-b637-5dc8a9a055a5")
-		(property "Reference" "Q4"
-			(at 32.1467 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SIA440DJ-T1-GE3"
-			(at 53.594 94.742 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:SC-70-6L_L2.0-W2.0-P0.65-BL"
-			(at 34.29 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 34.29 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 34.29 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C727349"
-			(at 34.29 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "f1c6c785-e0a1-4730-8c51-abbd766bd4bd")
-		)
-		(pin "6"
-			(uuid "480a4cda-e25b-43b7-84b2-c7d55761010c")
-		)
-		(pin "5"
-			(uuid "6bc4a5da-8b16-4eab-b4ae-f395ae21e52b")
-		)
-		(pin "7"
-			(uuid "0c564ae8-4d1b-4191-813a-371cf89d07e8")
-		)
-		(pin "1"
-			(uuid "9d937f47-3c36-4d86-bfe6-f999056a4df2")
-		)
-		(pin "8"
-			(uuid "0c31f7d6-443e-4c21-a2bf-4a7f3586ca38")
-		)
-		(pin "3"
-			(uuid "ff98652d-be47-478d-b3ed-5c014b986125")
-		)
-		(pin "2"
-			(uuid "24ed26e5-40d4-427e-823f-0e058606a3c0")
-		)
-		(instances
-			(project ""
-				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "Q4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "easyeda2kicad:TS-1088-AR02016")
 		(at 179.07 46.99 0)
 		(unit 1)
@@ -9255,7 +9255,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 138.1252 66.04 0)
 			(effects
 				(font
@@ -11083,7 +11083,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 263.8552 33.02 0)
 			(effects
 				(font
