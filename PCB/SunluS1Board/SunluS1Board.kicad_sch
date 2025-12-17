@@ -1638,43 +1638,34 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:Thermistor_NTC"
+		(symbol "Diode:1N4007"
 			(pin_numbers
 				(hide yes)
 			)
 			(pin_names
-				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "TH"
-				(at -4.445 0 90)
+			(property "Reference" "D"
+				(at 0 2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "Thermistor_NTC"
-				(at 3.175 0 90)
+			(property "Value" "1N4007"
+				(at 0 -2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" ""
-				(at 0 1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 1.27 0)
+			(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+				(at 0 -4.445 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1682,7 +1673,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Temperature dependent resistor, negative temperature coefficient"
+			(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1691,7 +1682,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "thermistor NTC resistor sensor RTD"
+			(property "Description" "1000V 1A General Purpose Rectifier Diode, DO-41"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1700,7 +1691,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*NTC* *Thermistor* PIN?ARRAY* bornier* *Terminal?Block* R_*"
+			(property "Sim.Device" "D"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1709,143 +1700,38 @@
 					(hide yes)
 				)
 			)
-			(symbol "Thermistor_NTC_0_1"
-				(arc
-					(start -3.175 2.413)
-					(mid -3.0506 2.3165)
-					(end -3.048 2.159)
-					(stroke
-						(width 0)
-						(type default)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(fill
-						(type none)
-					)
+					(hide yes)
 				)
-				(arc
-					(start -3.048 2.794)
-					(mid -2.9736 2.9736)
-					(end -2.794 3.048)
-					(stroke
-						(width 0)
-						(type default)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(fill
-						(type none)
-					)
+					(hide yes)
 				)
-				(arc
-					(start -2.794 3.048)
-					(mid -2.6144 2.9736)
-					(end -2.54 2.794)
-					(stroke
-						(width 0)
-						(type default)
+			)
+			(property "ki_fp_filters" "D*DO?41*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(fill
-						(type none)
-					)
+					(hide yes)
 				)
-				(arc
-					(start -2.794 2.54)
-					(mid -2.9736 2.6144)
-					(end -3.048 2.794)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.794 1.905)
-					(mid -2.9736 1.9794)
-					(end -3.048 2.159)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.54 2.159)
-					(mid -2.6144 1.9794)
-					(end -2.794 1.905)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.159 2.794)
-					(mid -2.434 2.5608)
-					(end -2.794 2.54)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
+			)
+			(symbol "1N4007_0_1"
 				(polyline
 					(pts
-						(xy -2.54 2.159) (xy -2.54 2.794)
+						(xy -1.27 1.27) (xy -1.27 -1.27)
 					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 -3.683) (xy -2.54 -1.397) (xy -2.794 -2.159) (xy -2.286 -2.159) (xy -2.54 -1.397) (xy -2.54 -1.651)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 2.54) (xy -1.778 1.524) (xy 1.778 -1.524) (xy 1.778 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -1.397) (xy -1.778 -3.683) (xy -2.032 -2.921) (xy -1.524 -2.921) (xy -1.778 -3.683)
-						(xy -1.778 -3.429)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -1.016 2.54)
-					(end 1.016 -2.54)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -1854,12 +1740,36 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 			)
-			(symbol "Thermistor_NTC_1_1"
+			(symbol "1N4007_1_1"
 				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1875,9 +1785,9 @@
 					)
 				)
 				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3561,22 +3471,10 @@
 		(uuid "97cc9f5c-f458-4990-b2fe-abb304f8f98a")
 	)
 	(junction
-		(at 78.74 99.06)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "98424b89-5555-409c-acc0-fb05459da8c1")
-	)
-	(junction
 		(at 149.86 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a5fec6d9-e243-473d-8c04-72a513603026")
-	)
-	(junction
-		(at 78.74 54.61)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b4b822aa-0f3f-4c34-bc06-bdbe39a0e703")
 	)
 	(junction
 		(at 233.68 132.08)
@@ -4032,6 +3930,16 @@
 	)
 	(wire
 		(pts
+			(xy 157.48 171.45) (xy 157.48 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "86753206-138b-4718-8b42-7d388394b9c7")
+	)
+	(wire
+		(pts
 			(xy 130.81 83.82) (xy 135.89 83.82)
 		)
 		(stroke
@@ -4092,13 +4000,33 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 91.44) (xy 246.38 91.44)
+			(xy 228.6 91.44) (xy 233.68 91.44)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "a8ea4cd5-6dd2-419e-8c98-d3d9447ccdd4")
+	)
+	(wire
+		(pts
+			(xy 241.3 91.44) (xy 246.38 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad02fb6c-b349-481f-9d0d-0faacb61cd67")
+	)
+	(wire
+		(pts
+			(xy 157.48 162.56) (xy 157.48 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b128cb61-9d70-4458-ae6b-d92e0f5fbc7c")
 	)
 	(wire
 		(pts
@@ -5126,7 +5054,7 @@
 	)
 	(symbol
 		(lib_id "power:+24V")
-		(at 157.48 165.1 0)
+		(at 157.48 162.56 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5135,7 +5063,7 @@
 		(fields_autoplaced yes)
 		(uuid "024e8605-3b2a-4bfe-a6e6-7e78de038433")
 		(property "Reference" "#PWR022"
-			(at 157.48 168.91 0)
+			(at 157.48 166.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5144,7 +5072,7 @@
 			)
 		)
 		(property "Value" "+24V"
-			(at 157.48 160.02 0)
+			(at 157.48 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5152,7 +5080,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 157.48 165.1 0)
+			(at 157.48 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5161,7 +5089,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 157.48 165.1 0)
+			(at 157.48 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5170,7 +5098,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+24V\""
-			(at 157.48 165.1 0)
+			(at 157.48 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5218,7 +5146,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 279.0952 109.22 0)
 			(effects
 				(font
@@ -5288,7 +5216,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 149.5552 66.04 0)
 			(effects
 				(font
@@ -5491,7 +5419,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 43.688 113.03 90)
 			(effects
 				(font
@@ -5534,72 +5462,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 78.74 62.23 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0cf2700f-4a90-43fd-9b7c-3966c1c45772")
-		(property "Reference" "#PWR011"
-			(at 78.74 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 78.74 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 78.74 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 78.74 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 78.74 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "11152c57-161e-4835-8792-1dd3fd55b8a5")
-		)
-		(instances
-			(project "SunluS1Board"
-				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 80.01 165.1 0)
 		(unit 1)
@@ -5627,7 +5489,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 78.232 165.1 90)
 			(effects
 				(font
@@ -5688,7 +5550,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "1uF"
 			(at 270.51 106.6799 0)
 			(effects
 				(font
@@ -5697,7 +5559,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 267.6652 109.22 0)
 			(effects
 				(font
@@ -5806,76 +5668,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Thermistor_NTC")
-		(at 78.74 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "224516b1-0f37-4f63-a01f-d1d0af906380")
-		(property "Reference" "TH1"
-			(at 81.28 101.9174 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100k"
-			(at 81.28 104.4574 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 78.74 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 78.74 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Temperature dependent resistor, negative temperature coefficient"
-			(at 78.74 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "d508e2fe-e31f-4cfd-ab06-86296212ab92")
-		)
-		(pin "1"
-			(uuid "0645017e-a6f7-43dc-a0db-a0c26e644b23")
-		)
-		(instances
-			(project ""
-				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "TH1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 236.22 20.32 270)
 		(unit 1)
@@ -5901,7 +5693,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 236.22 18.542 90)
 			(effects
 				(font
@@ -5971,7 +5763,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 275.2852 33.02 0)
 			(effects
 				(font
@@ -6039,7 +5831,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 207.01 87.122 90)
 			(effects
 				(font
@@ -6351,7 +6143,7 @@
 	)
 	(symbol
 		(lib_id "power:+24V")
-		(at 241.3 91.44 0)
+		(at 228.6 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6360,7 +6152,7 @@
 		(fields_autoplaced yes)
 		(uuid "4eef6768-28e0-4bf2-858e-01fd1ae74f96")
 		(property "Reference" "#PWR04"
-			(at 241.3 95.25 0)
+			(at 228.6 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6369,7 +6161,7 @@
 			)
 		)
 		(property "Value" "+24V"
-			(at 241.3 86.36 0)
+			(at 228.6 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6377,7 +6169,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 241.3 91.44 0)
+			(at 228.6 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6386,7 +6178,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 241.3 91.44 0)
+			(at 228.6 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6395,7 +6187,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+24V\""
-			(at 241.3 91.44 0)
+			(at 228.6 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6410,6 +6202,92 @@
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4007")
+		(at 237.49 91.44 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "543b0714-0f53-4e41-9d28-9bf38753c25f")
+		(property "Reference" "D3"
+			(at 237.49 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1N4007W"
+			(at 237.49 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:Nexperia_CFP3_SOD-123W"
+			(at 237.49 86.995 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
+			(at 237.49 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1000V 1A General Purpose Rectifier Diode, DO-41"
+			(at 237.49 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 237.49 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 237.49 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "97e7debf-1c8a-47e1-a201-c412145abac5")
+		)
+		(pin "2"
+			(uuid "7f8b3bbc-857c-4fa5-8912-42c1256c20c7")
+		)
+		(instances
+			(project ""
+				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
+					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -6615,72 +6493,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 78.74 106.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5864a18e-f898-4547-99fe-a6528ad68e9c")
-		(property "Reference" "#PWR012"
-			(at 78.74 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 78.74 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 78.74 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 78.74 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 78.74 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9da83634-eff3-4348-a80c-f21c65069b22")
-		)
-		(instances
-			(project "SunluS1Board"
-				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "#PWR012")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
 		(at 148.59 172.72 0)
 		(unit 1)
@@ -6776,7 +6588,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 110.49 156.5148 0)
 			(effects
 				(font
@@ -7045,7 +6857,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 242.2652 109.22 0)
 			(effects
 				(font
@@ -7306,7 +7118,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 217.17 56.388 90)
 			(effects
 				(font
@@ -7441,7 +7253,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 45.72 109.728 90)
 			(effects
 				(font
@@ -7720,7 +7532,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53048-0210_1x02_P1.25mm_Horizontal"
 			(at 107.95 172.72 0)
 			(effects
 				(font
@@ -7823,76 +7635,6 @@
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
 					(reference "#PWR024")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Thermistor_NTC")
-		(at 78.74 58.42 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "93afc228-7cf8-40b1-b55b-7d6493777bd3")
-		(property "Reference" "TH2"
-			(at 81.28 57.4674 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Thermistor_NTC"
-			(at 81.28 60.0074 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 78.74 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 78.74 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Temperature dependent resistor, negative temperature coefficient"
-			(at 78.74 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "42d1b24c-57b0-4ca7-8042-af2ac5279aed")
-		)
-		(pin "1"
-			(uuid "ec642ee3-3a09-4639-a237-d6e0a31ff5cd")
-		)
-		(instances
-			(project "SunluS1Board"
-				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "TH2")
 					(unit 1)
 				)
 			)
@@ -8127,7 +7869,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 155.9052 154.94 0)
 			(effects
 				(font
@@ -8171,7 +7913,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 157.48 168.91 180)
+		(at 157.48 167.64 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8180,7 +7922,7 @@
 		(fields_autoplaced yes)
 		(uuid "abcd81a9-07c2-4748-9810-a111cbe060c4")
 		(property "Reference" "F1"
-			(at 160.02 167.6399 0)
+			(at 160.02 166.3699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8189,7 +7931,7 @@
 			)
 		)
 		(property "Value" "Fuse"
-			(at 160.02 170.1799 0)
+			(at 160.02 168.9099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8198,7 +7940,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
-			(at 159.258 168.91 90)
+			(at 159.258 167.64 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8207,7 +7949,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 157.48 168.91 0)
+			(at 157.48 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8216,7 +7958,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 157.48 168.91 0)
+			(at 157.48 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8399,7 +8141,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 101.092 165.1 90)
 			(effects
 				(font
@@ -8469,7 +8211,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 76.962 50.8 90)
 			(effects
 				(font
@@ -8739,7 +8481,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 175.26 59.3852 0)
 			(effects
 				(font
@@ -8807,7 +8549,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 45.72 55.118 90)
 			(effects
 				(font
@@ -8878,7 +8620,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 219.202 59.69 90)
 			(effects
 				(font
@@ -9073,7 +8815,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "1uF"
 			(at 140.97 63.4999 0)
 			(effects
 				(font
@@ -9082,7 +8824,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 138.1252 66.04 0)
 			(effects
 				(font
@@ -9227,7 +8969,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 129.032 80.01 90)
 			(effects
 				(font
@@ -9472,7 +9214,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 175.26 25.0952 0)
 			(effects
 				(font
@@ -9533,7 +9275,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "1uF"
 			(at 233.68 106.6799 0)
 			(effects
 				(font
@@ -9542,7 +9284,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 230.8352 109.22 0)
 			(effects
 				(font
@@ -9678,7 +9420,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 43.688 58.42 90)
 			(effects
 				(font
@@ -9805,7 +9547,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "1uF"
 			(at 147.32 152.3999 0)
 			(effects
 				(font
@@ -9814,7 +9556,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 144.4752 154.94 0)
 			(effects
 				(font
@@ -9882,7 +9624,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 195.58 88.9 0)
 			(effects
 				(font
@@ -10160,7 +9902,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53048-0210_1x02_P1.25mm_Horizontal"
 			(at 85.09 172.72 0)
 			(effects
 				(font
@@ -10228,7 +9970,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 87.63 156.5148 0)
 			(effects
 				(font
@@ -10374,7 +10116,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 76.962 95.25 90)
 			(effects
 				(font
@@ -10901,7 +10643,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "1uF"
 			(at 266.7 30.4799 0)
 			(effects
 				(font
@@ -10910,7 +10652,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 263.8552 33.02 0)
 			(effects
 				(font
