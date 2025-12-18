@@ -6929,7 +6929,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "59194c3b-5240-4cf2-8632-328e8e47bf9f")
-		(property "Reference" "HT"
+		(property "Reference" "HT1"
 			(at 151.13 172.7199 0)
 			(effects
 				(font
@@ -6983,7 +6983,7 @@
 		(instances
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "HT")
+					(reference "HT1")
 					(unit 1)
 				)
 			)
@@ -7865,7 +7865,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "86fc995c-d49b-4b2c-928d-e626a94b8fd6")
-		(property "Reference" "hNTC"
+		(property "Reference" "hNTC1"
 			(at 110.49 172.7199 0)
 			(effects
 				(font
@@ -7919,7 +7919,7 @@
 		(instances
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "hNTC")
+					(reference "hNTC1")
 					(unit 1)
 				)
 			)
@@ -10315,7 +10315,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e23fc6fd-099b-4fb9-994f-e9ba23555884")
-		(property "Reference" "aNTC"
+		(property "Reference" "aNTC1"
 			(at 87.63 172.7199 0)
 			(effects
 				(font
@@ -10369,7 +10369,7 @@
 		(instances
 			(project ""
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "aNTC")
+					(reference "aNTC1")
 					(unit 1)
 				)
 			)
@@ -10863,7 +10863,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f30b0b7d-0d98-4859-b6be-935c7dd07e01")
-		(property "Reference" "Vin"
+		(property "Reference" "Vin1"
 			(at 165.1 172.7199 0)
 			(effects
 				(font
@@ -10917,7 +10917,7 @@
 		(instances
 			(project "SunluS1Board"
 				(path "/2863b0a4-ce41-4b5d-85c6-a6fe5f63d9f6"
-					(reference "Vin")
+					(reference "Vin1")
 					(unit 1)
 				)
 			)
