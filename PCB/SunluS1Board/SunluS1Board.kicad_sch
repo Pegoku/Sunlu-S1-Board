@@ -3619,16 +3619,16 @@
 		(uuid "1474e263-cf2b-4492-9c59-b1af5c7d0e43")
 	)
 	(junction
+		(at 233.68 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "186ae14b-4b75-4263-9d03-f87c6020e599")
+	)
+	(junction
 		(at 273.05 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1e2a36b6-7ed1-4a01-b740-5f2ec422b3ba")
-	)
-	(junction
-		(at 233.68 132.08)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "20e34292-480c-4d31-8d04-a6af64f022cb")
 	)
 	(junction
 		(at 143.51 58.42)
@@ -7993,8 +7993,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
-		(at 241.3 134.62 0)
-		(mirror y)
+		(at 238.76 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8017,8 +8016,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x03_P2.54mm_Vertical_SMD"
-			(at 241.3 134.62 0)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical_SMD"
+			(at 238.76 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8027,7 +8026,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 241.3 134.62 0)
+			(at 238.76 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8036,7 +8035,7 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 241.3 134.62 0)
+			(at 238.76 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
