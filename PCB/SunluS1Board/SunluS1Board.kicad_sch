@@ -8758,10 +8758,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "b5aa897c-b0c9-4af8-bcbc-0f7d7afc1096")
 		(property "Reference" "SW1"
-			(at 179.07 29.21 0)
+			(at 179.324 31.242 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8774,6 +8773,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "easyeda2kicad:SW-SMD_L3.9-W3.0-P4.45"
@@ -9166,10 +9166,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "c2c13751-6ac5-42da-8093-a53e81babcb1")
 		(property "Reference" "SW2"
-			(at 179.07 40.64 0)
+			(at 179.324 42.926 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9182,6 +9181,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "easyeda2kicad:SW-SMD_L3.9-W3.0-P4.45"
