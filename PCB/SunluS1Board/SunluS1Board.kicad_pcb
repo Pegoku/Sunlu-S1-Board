@@ -4624,7 +4624,7 @@
 				)
 			)
 		)
-		(property "Value" "0.1uF"
+		(property "Value" "100nF"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "641db609-8a55-4a9b-947a-45ee74ebd8db")
@@ -10809,7 +10809,7 @@
 				)
 			)
 		)
-		(property "Value" "0.1uF"
+		(property "Value" "100nF"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "f3c0a5c3-01ab-4db2-9a52-051ed2d8f7c8")
