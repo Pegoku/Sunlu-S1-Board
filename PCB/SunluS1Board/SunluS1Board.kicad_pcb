@@ -13126,7 +13126,7 @@
 				)
 			)
 		)
-		(property "Value" "100uF"
+		(property "Value" "47uF"
 			(at 0 3.999999 30)
 			(layer "F.Fab")
 			(uuid "81d9d85c-f35d-4634-bccb-92418319dfae")
