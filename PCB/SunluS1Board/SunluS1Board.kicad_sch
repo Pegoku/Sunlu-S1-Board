@@ -4079,12 +4079,6 @@
 		(uuid "1a5ae736-3e17-418d-b22b-40ea4fecc532")
 	)
 	(junction
-		(at 234.95 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1af9496f-3865-40e7-b3ad-0ca331ef1648")
-	)
-	(junction
 		(at 241.3 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4095,12 +4089,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "25999026-6756-4f6e-ba9b-0ef640765b52")
-	)
-	(junction
-		(at 248.92 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2ca83c59-4210-4511-a9c4-7a2be625c5f7")
 	)
 	(junction
 		(at 184.15 101.6)
@@ -5093,16 +5081,6 @@
 			(type default)
 		)
 		(uuid "a384be7c-d12a-48dd-a5d0-17ca54038af9")
-	)
-	(wire
-		(pts
-			(xy 234.95 107.95) (xy 248.92 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b0fbdc4a-b27e-4e87-a3ed-08ce7cc87d1b")
 	)
 	(wire
 		(pts
@@ -8234,7 +8212,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMC"
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 244.475 104.14 0)
 			(effects
 				(font
@@ -10347,7 +10325,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_APV_ANR4020"
 			(at 254 100.33 0)
 			(effects
 				(font
