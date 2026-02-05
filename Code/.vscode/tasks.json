@@ -1,0 +1,59 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Project",
+            "type": "cmake",
+            "command": "build",
+            "targets": [
+                "Code"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash STM32 (st-flash)",
+            "type": "shell",
+            "command": "st-flash",
+            "args": [
+                "write",
+                "build/Debug/Code.bin",
+                "0x08000000"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "dependsOn": ["Build Project"]
+        },
+        {
+            "label": "Build and Flash",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "-c",
+                "cmake --build build/Debug --target Code && st-flash write build/Debug/Code.bin 0x08000000"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
