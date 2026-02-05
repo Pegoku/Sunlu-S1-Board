@@ -1,0 +1,27 @@
+{
+  "version": "0.2.1",
+  "configurations": [
+    {
+      "type": "stlinkgdbtarget",
+      "request": "launch",
+      "name": "STM32 Debug (ST-Link)",
+
+      "cwd": "${workspaceFolder}",
+      "preBuild": "${command:st-stm32-ide-debug-launch.build}",
+      "runEntry": "main",
+
+      "imagesAndSymbols": [
+        {
+          "imageFileName": "${command:st-stm32-ide-debug-launch.get-projects-binary-from-context1}"
+        }
+      ],
+
+      "stlink": {
+        "adapterSpeed": 50,
+        "port": "SWD",
+        "reset": "connectUnderReset",
+        "haltAfterConnect": true
+      }
+    }
+  ]
+}
