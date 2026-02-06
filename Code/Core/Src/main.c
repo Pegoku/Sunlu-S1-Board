@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -65,6 +65,14 @@ static void MX_SPI1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+// NTC parameters (typical 100K NTC thermistor)
+#define THERMISTOR_NOMINAL 100000.0f  // Resistance at 25°C
+#define TEMPERATURE_NOMINAL 25.0f      // Temperature for nominal resistance
+#define B_COEFFICIENT 3950.0f          // Beta coefficient
+#define SERIES_RESISTOR 100000.0f      // Value of the series resistor
+#define ADC_MAX_VALUE 4095.0f          // 12-bit ADC
+#define VREF 3.3f                       // Reference voltage
 
 // Font for '0'-'9' (5x7 pixels)
 static const uint8_t Font5x7[10][5] = {
@@ -137,6 +145,90 @@ static void DrawDigit(uint8_t x, uint8_t y, char digit, uint16_t color)
     }
 
     ST7735_Unselect();
+}
+
+static void DrawString(uint8_t x, uint8_t y, const char *str, uint16_t color)
+{
+    uint8_t offset = 0;
+    while (*str != '\0')
+    {
+        DrawDigit((uint8_t)(x + offset), y, *str, color);
+        str++;
+        offset += 7;  // 5 pixels + 2 spacing
+    }
+}
+
+static float ReadNTC(uint32_t adc_channel)
+{
+    ADC_ChannelConfTypeDef sConfig = {0};
+    
+    // Configure the ADC channel
+    sConfig.Channel = adc_channel;
+    sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
+    if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    
+    // Start ADC conversion
+    HAL_ADC_Start(&hadc1);
+    
+    // Wait for conversion to complete
+    if (HAL_ADC_PollForConversion(&hadc1, 100) == HAL_OK)
+    {
+        uint32_t adc_value = HAL_ADC_GetValue(&hadc1);
+        HAL_ADC_Stop(&hadc1);
+        
+        // Calculate resistance
+        float voltage = ((float)adc_value / ADC_MAX_VALUE) * VREF;
+        float resistance = SERIES_RESISTOR * voltage / (VREF - voltage);
+        
+        // Steinhart-Hart equation (simplified Beta parameter equation)
+        float steinhart;
+        steinhart = resistance / THERMISTOR_NOMINAL;           // (R/Ro)
+        steinhart = logf(steinhart);                           // ln(R/Ro)
+        steinhart /= B_COEFFICIENT;                            // 1/B * ln(R/Ro)
+        steinhart += 1.0f / (TEMPERATURE_NOMINAL + 273.15f);   // + (1/To)
+        steinhart = 1.0f / steinhart;                          // Invert
+        steinhart -= 273.15f;                                  // Convert to Celsius
+        
+        return steinhart;
+    }
+    
+    HAL_ADC_Stop(&hadc1);
+    return -999.0f; // Error value
+}
+
+static void FloatToString(float value, char *buffer, uint8_t decimals)
+{
+    int32_t int_part = (int32_t)value;
+    float frac_part = value - (float)int_part;
+    
+    // Handle negative numbers
+    uint8_t idx = 0;
+    if (int_part < 0)
+    {
+        buffer[idx++] = '-';
+        int_part = -int_part;
+        frac_part = -frac_part;
+    }
+    
+    // Simple conversion for 0-99
+    if (int_part >= 10)
+    {
+        buffer[idx++] = '0' + (char)(int_part / 10);
+    }
+    buffer[idx++] = '0' + (char)(int_part % 10);
+    
+    // Add decimal point and fractional part
+    if (decimals > 0)
+    {
+        buffer[idx++] = '.';
+        int32_t digit = (int32_t)(frac_part * 10.0f);
+        buffer[idx++] = '0' + (char)(digit % 10);
+    }
+    
+    buffer[idx] = '\0';
 }
 
 
@@ -215,12 +307,9 @@ int main(void)
   }
   ST7735_Unselect();
 
-  // Draw digits 0-9
-  const char *str = "0123456789";
-  for (int i = 0; str[i] != '\0'; i++)
-  {
-    DrawDigit((uint8_t)(10 + (i * 7)), 20, str[i], 0xFFFF);
-  }
+  // Display labels
+  DrawString(10, 20, "Air", 0xFFFF);   // White text
+  DrawString(10, 50, "Heat", 0xFFFF);  // White text
 
   /* USER CODE END 2 */
 
@@ -230,6 +319,36 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+    // Read NTC temperatures
+    float air_temp = ReadNTC(ADC_CHANNEL_11);   // airNTC
+    float heat_temp = ReadNTC(ADC_CHANNEL_12);  // heatNTC
+    
+    // Convert to strings
+    char air_str[16];
+    char heat_str[16];
+    FloatToString(air_temp, air_str, 1);
+    FloatToString(heat_temp, heat_str, 1);
+    
+    // Clear temperature display areas (overwrite with black background)
+    ST7735_Select();
+    ST7735_SetWindow(50, 20, 120, 30);
+    for (uint32_t i = 0; i < 71 * 11; i++)
+    {
+        ST7735_Write(0x00, 1);
+        ST7735_Write(0x00, 1);
+    }
+    ST7735_SetWindow(50, 50, 120, 60);
+    for (uint32_t i = 0; i < 71 * 11; i++)
+    {
+        ST7735_Write(0x00, 1);
+        ST7735_Write(0x00, 1);
+    }
+    ST7735_Unselect();
+    
+    // Display temperatures (in cyan/green color)
+    DrawString(50, 20, air_str, 0x07FF);   // Cyan
+    DrawString(50, 50, heat_str, 0x07E0);  // Green
+    
     HAL_Delay(500);
 
     /* USER CODE BEGIN 3 */
