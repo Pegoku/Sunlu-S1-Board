@@ -74,8 +74,8 @@ static void MX_SPI1_Init(void);
 #define ADC_MAX_VALUE 4095.0f          // 12-bit ADC
 #define VREF 3.3f                       // Reference voltage
 
-// Font for '0'-'9' (5x7 pixels)
-static const uint8_t Font5x7[10][5] = {
+// Font for '0'-'9' and '.' (5x7 pixels)
+static const uint8_t Font5x7[11][5] = {
     {0x3E, 0x45, 0x49, 0x51, 0x3E}, // 0
     {0x00, 0x21, 0x7F, 0x01, 0x00}, // 1
     {0x21, 0x43, 0x45, 0x49, 0x31}, // 2
@@ -85,7 +85,8 @@ static const uint8_t Font5x7[10][5] = {
     {0x1E, 0x29, 0x49, 0x49, 0x06}, // 6
     {0x40, 0x47, 0x48, 0x50, 0x60}, // 7
     {0x36, 0x49, 0x49, 0x49, 0x36}, // 8
-    {0x30, 0x49, 0x49, 0x4A, 0x3C}  // 9
+    {0x30, 0x49, 0x49, 0x4A, 0x3C}, // 9
+    {0x00, 0x00, 0x03, 0x00, 0x00}  // . (decimal point)
 };
 
 
@@ -125,8 +126,16 @@ static void ST7735_SetWindow(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
 
 static void DrawDigit(uint8_t x, uint8_t y, char digit, uint16_t color)
 {
-    uint8_t index = (uint8_t)(digit - '0');
-    if (index > 9) return;
+    uint8_t index;
+    if (digit == '.')
+    {
+        index = 10;  // Decimal point is at index 10
+    }
+    else
+    {
+        index = (uint8_t)(digit - '0');
+        if (index > 9) return;  // Invalid character
+    }
 
     ST7735_Select();
     ST7735_SetWindow(x, y, (uint8_t)(x + 4), (uint8_t)(y + 6));
@@ -310,6 +319,9 @@ int main(void)
   // Display labels
   DrawString(10, 20, "Air", 0xFFFF);   // White text
   DrawString(10, 50, "Heat", 0xFFFF);  // White text
+  
+  // Start PWM for heater control (TIM1 Channel 1 on PA8)
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 
   /* USER CODE END 2 */
 
@@ -319,6 +331,24 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+    // Read button 1 state (PA4 - b1_Pin)
+    GPIO_PinState button1_state = HAL_GPIO_ReadPin(b1_GPIO_Port, b1_Pin);
+    
+    // Control heater based on button state
+    // Button is active LOW (pressed = GPIO_PIN_RESET with pull-up)
+    if (button1_state == GPIO_PIN_RESET)
+    {
+        // Button pressed - enable heater at full power
+        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 65535);  // Full duty cycle
+        HAL_GPIO_WritePin(led_GPIO_Port, led_Pin, GPIO_PIN_SET);  // Turn on LED
+    }
+    else
+    {
+        // Button released - disable heater
+        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);  // 0% duty cycle
+        HAL_GPIO_WritePin(led_GPIO_Port, led_Pin, GPIO_PIN_RESET);  // Turn off LED
+    }
+    
     // Read NTC temperatures
     float air_temp = ReadNTC(ADC_CHANNEL_11);   // airNTC
     float heat_temp = ReadNTC(ADC_CHANNEL_12);  // heatNTC
@@ -348,7 +378,7 @@ int main(void)
     // Display temperatures (in cyan/green color)
     DrawString(50, 20, air_str, 0x07FF);   // Cyan
     DrawString(50, 50, heat_str, 0x07E0);  // Green
-    
+
     HAL_Delay(500);
 
     /* USER CODE BEGIN 3 */
@@ -663,7 +693,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pins : b1_Pin b2_Pin */
   GPIO_InitStruct.Pin = b1_Pin|b2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
