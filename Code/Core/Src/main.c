@@ -68,17 +68,19 @@ static void MX_SPI1_Init(void);
 
 // Font for '0'-'9' (5x7 pixels)
 static const uint8_t Font5x7[10][5] = {
-    {0x3E, 0x51, 0x49, 0x45, 0x3E}, // 0
-    {0x00, 0x42, 0x7F, 0x40, 0x00}, // 1
-    {0x42, 0x61, 0x51, 0x49, 0x46}, // 2
-    {0x21, 0x41, 0x45, 0x4B, 0x31}, // 3
-    {0x18, 0x14, 0x12, 0x7F, 0x10}, // 4
-    {0x27, 0x45, 0x45, 0x45, 0x39}, // 5
-    {0x3C, 0x4A, 0x49, 0x49, 0x30}, // 6
-    {0x01, 0x71, 0x09, 0x05, 0x03}, // 7
+    {0x3E, 0x45, 0x49, 0x51, 0x3E}, // 0
+    {0x00, 0x21, 0x7F, 0x01, 0x00}, // 1
+    {0x21, 0x43, 0x45, 0x49, 0x31}, // 2
+    {0x42, 0x41, 0x51, 0x69, 0x46}, // 3
+    {0x0C, 0x14, 0x24, 0x7F, 0x04}, // 4
+    {0x72, 0x51, 0x51, 0x51, 0x4E}, // 5
+    {0x1E, 0x29, 0x49, 0x49, 0x06}, // 6
+    {0x40, 0x47, 0x48, 0x50, 0x60}, // 7
     {0x36, 0x49, 0x49, 0x49, 0x36}, // 8
-    {0x06, 0x49, 0x49, 0x29, 0x1E}  // 9
+    {0x30, 0x49, 0x49, 0x4A, 0x3C}  // 9
 };
+
+
 
 static void ST7735_Select(void)
 {
@@ -115,28 +117,28 @@ static void ST7735_SetWindow(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
 
 static void DrawDigit(uint8_t x, uint8_t y, char digit, uint16_t color)
 {
-  uint8_t index = (uint8_t)(digit - '0');
-  if (index > 9)
-  {
-    return;
-  }
+    uint8_t index = (uint8_t)(digit - '0');
+    if (index > 9) return;
 
-  ST7735_Select();
-  ST7735_SetWindow(x, y, (uint8_t)(x + 4), (uint8_t)(y + 6));
-  for (int col = 0; col < 5; col++)
-  {
-    uint8_t line = Font5x7[index][col];
+    ST7735_Select();
+    ST7735_SetWindow(x, y, (uint8_t)(x + 4), (uint8_t)(y + 6));
+
+    // ST7735 expects pixels in row-major order: left->right, then next row.
     for (int row = 0; row < 7; row++)
     {
-      uint16_t p = (line & (1U << row)) ? color : 0x0000U;
-      uint8_t hi = (uint8_t)(p >> 8);
-      uint8_t lo = (uint8_t)(p & 0xFF);
-      ST7735_Write(hi, 1);
-      ST7735_Write(lo, 1);
+        for (int col = 0; col < 5; col++)
+        {
+            uint8_t line = Font5x7[index][col];          // column byte
+            uint16_t p = (line & (1U << (6 - row))) ? color : 0x0000U;
+
+            ST7735_Write((uint8_t)(p >> 8), 1);
+            ST7735_Write((uint8_t)(p & 0xFF), 1);
+        }
     }
-  }
-  ST7735_Unselect();
+
+    ST7735_Unselect();
 }
+
 
 static void ST7735_Init(void)
 {
@@ -203,16 +205,22 @@ int main(void)
 
   HAL_GPIO_WritePin(BL_GPIO_Port, BL_Pin, GPIO_PIN_SET);
 
-  // Fill entire display with alternating black/white pixel stripes
+  // Clear screen to black
   ST7735_Select();
-  ST7735_SetWindow(0, 0, 127, 159); // Full display area
+  ST7735_SetWindow(0, 0, 127, 159);
   for (uint32_t i = 0; i < 128 * 160; i++)
   {
-    uint16_t color = (i & 1) ? 0xFFFF : 0x0000; // Alternate white/black
-    ST7735_Write((uint8_t)(color >> 8), 1);
-    ST7735_Write((uint8_t)(color & 0xFF), 1);
+    ST7735_Write(0x00, 1);
+    ST7735_Write(0x00, 1);
   }
   ST7735_Unselect();
+
+  // Draw digits 0-9
+  const char *str = "0123456789";
+  for (int i = 0; str[i] != '\0'; i++)
+  {
+    DrawDigit((uint8_t)(10 + (i * 7)), 20, str[i], 0xFFFF);
+  }
 
   /* USER CODE END 2 */
 
