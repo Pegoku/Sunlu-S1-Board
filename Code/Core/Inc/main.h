@@ -79,11 +79,11 @@ void Error_Handler(void);
 /* USER CODE BEGIN Private defines */
 
 #define ST7735_CS_Pin GPIO_PIN_7
-#define ST7735_BL_Pin GPIO_PIN_8
-#define ST7735_BL_Pin_GPIO_Port GPIOB
 #define ST7735_CS_GPIO_Port GPIOB
 #define ST7735_DC_Pin GPIO_PIN_3
 #define ST7735_DC_GPIO_Port GPIOA
+#define ST7735_BL_Pin BL_Pin
+#define ST7735_BL_GPIO_Port BL_GPIO_Port
 
 /* USER CODE END Private defines */
 

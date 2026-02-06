@@ -80,14 +80,22 @@ static const uint8_t Font5x7[10][5] = {
     {0x06, 0x49, 0x49, 0x29, 0x1E}  // 9
 };
 
+static void ST7735_Select(void)
+{
+  HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_RESET);
+}
+
+static void ST7735_Unselect(void)
+{
+  HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_SET);
+}
+
 static void ST7735_Write(uint8_t data, uint8_t is_data)
 {
   HAL_GPIO_WritePin(ST7735_DC_GPIO_Port, ST7735_DC_Pin,
                     is_data ? GPIO_PIN_SET : GPIO_PIN_RESET);
 
-  HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_RESET);
   HAL_SPI_Transmit(&hspi1, &data, 1, HAL_MAX_DELAY);
-  HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_SET);
 }
 
 static void ST7735_SetWindow(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
@@ -113,6 +121,7 @@ static void DrawDigit(uint8_t x, uint8_t y, char digit, uint16_t color)
     return;
   }
 
+  ST7735_Select();
   ST7735_SetWindow(x, y, (uint8_t)(x + 4), (uint8_t)(y + 6));
   for (int col = 0; col < 5; col++)
   {
@@ -126,19 +135,31 @@ static void DrawDigit(uint8_t x, uint8_t y, char digit, uint16_t color)
       ST7735_Write(lo, 1);
     }
   }
+  ST7735_Unselect();
 }
 
 static void ST7735_Init(void)
 {
   HAL_Delay(10);
+  ST7735_Select();
+
   ST7735_Write(0x01, 0); // SW Reset
   HAL_Delay(150);
   ST7735_Write(0x11, 0); // Sleep Out
   HAL_Delay(150);
-  ST7735_Write(0x3A, 0);
+
+  ST7735_Write(0x3A, 0); // COLMOD
   ST7735_Write(0x05, 1); // 16-bit color
+
+  ST7735_Write(0x36, 0); // MADCTL
+  ST7735_Write(0x00, 1); // Row/Column order
+
+  ST7735_Write(0x21, 0); // INVON (many ST7735 need inversion)
+
   ST7735_Write(0x29, 0); // Display On
   HAL_Delay(10);
+
+  ST7735_Unselect();
 }
 
 /* USER CODE END 0 */
@@ -180,11 +201,18 @@ int main(void)
 
   ST7735_Init();
 
-  const char *str = "1234567890";
-  for (int i = 0; str[i] != '\0'; i++)
+  HAL_GPIO_WritePin(BL_GPIO_Port, BL_Pin, GPIO_PIN_SET);
+
+  // Fill entire display with alternating black/white pixel stripes
+  ST7735_Select();
+  ST7735_SetWindow(0, 0, 127, 159); // Full display area
+  for (uint32_t i = 0; i < 128 * 160; i++)
   {
-    DrawDigit((uint8_t)(10 + (i * 7)), 20, str[i], 0xFFFF); // White text
+    uint16_t color = (i & 1) ? 0xFFFF : 0x0000; // Alternate white/black
+    ST7735_Write((uint8_t)(color >> 8), 1);
+    ST7735_Write((uint8_t)(color & 0xFF), 1);
   }
+  ST7735_Unselect();
 
   /* USER CODE END 2 */
 
@@ -193,8 +221,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    
-    HAL_GPIO_TogglePin(BL_GPIO_Port, BL_Pin);
+
     HAL_Delay(500);
 
     /* USER CODE BEGIN 3 */
