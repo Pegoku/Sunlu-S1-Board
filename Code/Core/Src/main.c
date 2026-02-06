@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stm32c0xx_hal_gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -65,6 +66,81 @@ static void MX_SPI1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+// Font for '0'-'9' (5x7 pixels)
+static const uint8_t Font5x7[10][5] = {
+    {0x3E, 0x51, 0x49, 0x45, 0x3E}, // 0
+    {0x00, 0x42, 0x7F, 0x40, 0x00}, // 1
+    {0x42, 0x61, 0x51, 0x49, 0x46}, // 2
+    {0x21, 0x41, 0x45, 0x4B, 0x31}, // 3
+    {0x18, 0x14, 0x12, 0x7F, 0x10}, // 4
+    {0x27, 0x45, 0x45, 0x45, 0x39}, // 5
+    {0x3C, 0x4A, 0x49, 0x49, 0x30}, // 6
+    {0x01, 0x71, 0x09, 0x05, 0x03}, // 7
+    {0x36, 0x49, 0x49, 0x49, 0x36}, // 8
+    {0x06, 0x49, 0x49, 0x29, 0x1E}  // 9
+};
+
+static void ST7735_Write(uint8_t data, uint8_t is_data)
+{
+  HAL_GPIO_WritePin(ST7735_DC_GPIO_Port, ST7735_DC_Pin,
+                    is_data ? GPIO_PIN_SET : GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_RESET);
+  HAL_SPI_Transmit(&hspi1, &data, 1, HAL_MAX_DELAY);
+  HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_SET);
+}
+
+static void ST7735_SetWindow(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
+{
+  ST7735_Write(0x2A, 0); // Column Address Set
+  ST7735_Write(0x00, 1);
+  ST7735_Write(x0, 1);
+  ST7735_Write(0x00, 1);
+  ST7735_Write(x1, 1);
+  ST7735_Write(0x2B, 0); // Row Address Set
+  ST7735_Write(0x00, 1);
+  ST7735_Write(y0, 1);
+  ST7735_Write(0x00, 1);
+  ST7735_Write(y1, 1);
+  ST7735_Write(0x2C, 0); // RAM Write
+}
+
+static void DrawDigit(uint8_t x, uint8_t y, char digit, uint16_t color)
+{
+  uint8_t index = (uint8_t)(digit - '0');
+  if (index > 9)
+  {
+    return;
+  }
+
+  ST7735_SetWindow(x, y, (uint8_t)(x + 4), (uint8_t)(y + 6));
+  for (int col = 0; col < 5; col++)
+  {
+    uint8_t line = Font5x7[index][col];
+    for (int row = 0; row < 7; row++)
+    {
+      uint16_t p = (line & (1U << row)) ? color : 0x0000U;
+      uint8_t hi = (uint8_t)(p >> 8);
+      uint8_t lo = (uint8_t)(p & 0xFF);
+      ST7735_Write(hi, 1);
+      ST7735_Write(lo, 1);
+    }
+  }
+}
+
+static void ST7735_Init(void)
+{
+  HAL_Delay(10);
+  ST7735_Write(0x01, 0); // SW Reset
+  HAL_Delay(150);
+  ST7735_Write(0x11, 0); // Sleep Out
+  HAL_Delay(150);
+  ST7735_Write(0x3A, 0);
+  ST7735_Write(0x05, 1); // 16-bit color
+  ST7735_Write(0x29, 0); // Display On
+  HAL_Delay(10);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -102,6 +178,14 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
+  ST7735_Init();
+
+  const char *str = "1234567890";
+  for (int i = 0; str[i] != '\0'; i++)
+  {
+    DrawDigit((uint8_t)(10 + (i * 7)), 20, str[i], 0xFFFF); // White text
+  }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -109,8 +193,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-      HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
-      HAL_Delay(500);
+    
+    HAL_GPIO_TogglePin(BL_GPIO_Port, BL_Pin);
+    HAL_Delay(500);
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -411,14 +497,14 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(led_GPIO_Port, led_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, led_Pin|BL_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : led_Pin */
-  GPIO_InitStruct.Pin = led_Pin;
+  /*Configure GPIO pins : led_Pin BL_Pin */
+  GPIO_InitStruct.Pin = led_Pin|BL_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(led_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : b1_Pin b2_Pin */
   GPIO_InitStruct.Pin = b1_Pin|b2_Pin;

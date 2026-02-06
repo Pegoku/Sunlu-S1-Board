@@ -54,6 +54,50 @@
                 "panel": "shared"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Start GDB Server (st-util)",
+            "type": "shell",
+            "command": "st-util",
+            "args": [
+                "-p",
+                "4242"
+            ],
+            "isBackground": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": "^.*$",
+                    "file": 1,
+                    "location": 2,
+                    "message": 3
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^st-util",
+                    "endsPattern": "Listening at.*4242"
+                }
+            }
+        },
+        {
+            "label": "Kill GDB Server",
+            "type": "shell",
+            "command": "pkill",
+            "args": [
+                "-f",
+                "st-util"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false
+            },
+            "problemMatcher": []
         }
     ]
 }

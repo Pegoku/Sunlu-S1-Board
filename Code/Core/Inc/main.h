@@ -69,12 +69,21 @@ void Error_Handler(void);
 #define b1_GPIO_Port GPIOA
 #define b2_Pin GPIO_PIN_5
 #define b2_GPIO_Port GPIOA
+#define BL_Pin GPIO_PIN_8
+#define BL_GPIO_Port GPIOA
 #define airNTC_Pin GPIO_PIN_11
 #define airNTC_GPIO_Port GPIOA
 #define heatNTC_Pin GPIO_PIN_12
 #define heatNTC_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
+
+#define ST7735_CS_Pin GPIO_PIN_7
+#define ST7735_BL_Pin GPIO_PIN_8
+#define ST7735_BL_Pin_GPIO_Port GPIOB
+#define ST7735_CS_GPIO_Port GPIOB
+#define ST7735_DC_Pin GPIO_PIN_3
+#define ST7735_DC_GPIO_Port GPIOA
 
 /* USER CODE END Private defines */
 
