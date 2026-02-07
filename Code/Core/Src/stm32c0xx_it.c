@@ -141,5 +141,8 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
-
+void EXTI4_15_IRQHandler(void)
+{
+  HAL_GPIO_EXTI_IRQHandler(b1_Pin);
+}
 /* USER CODE END 1 */

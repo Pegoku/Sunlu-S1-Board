@@ -431,9 +431,9 @@ int main(void)
     float heat_temp = ReadNTC(ADC_CHANNEL_12);  // heatNTC
     
     // Convert to strings
-    char air_str[16];
-    char heat_str[16];
-    FloatToString(20.10f, air_str, 1);
+    char air_str[8];
+    char heat_str[8];
+    FloatToString(air_temp, air_str, 1);
     FloatToString(heat_temp, heat_str, 1);
     
     // Clear temperature display areas (overwrite with black background)
@@ -456,7 +456,7 @@ int main(void)
     DrawString(50, 20, air_str, 0x07FF);   // Cyan
     DrawString(50, 50, heat_str, 0x07E0);  // Green
    
-    HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
+    // HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
 
     HAL_Delay(500);
 
