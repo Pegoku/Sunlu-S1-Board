@@ -128,6 +128,12 @@ static int16_t  atemp = 0, htemp = 0;
 static uint8_t  frd  = 1;
 static uint32_t tb = 0, tt = 0, ts = 0, td = 0;
 
+/* Shadow state – only redraw fields whose value changed */
+static int16_t  p_at = -1;
+static uint16_t p_rm = 0xFFFF;
+static int16_t  p_st = -1;
+static DS       p_ds = SI;
+
 /* ══════════════════════════════════════════════════════════════════
  *  ST7735  LOW-LEVEL
  * ══════════════════════════════════════════════════════════════════ */
@@ -359,21 +365,28 @@ static void DrMain(uint8_t f)
         Fill(0, 80, SW, 1, C_DK);
     }
 
-    /* Air temperature (big) + Time side-by-side */
-    FmtT(atemp, buf);
-    DT(4, 4, buf, C_CY, C_BK, 4);
-    buf[0]=CDEG; buf[1]='C'; buf[2]=0;
-    DT(52, 12, buf, C_CY, C_BK, 2);
+    /* Air temperature – only if changed */
+    if (f || atemp != p_at) {
+        p_at = atemp;
+        FmtT(atemp, buf);
+        DT(4, 4, buf, C_CY, C_BK, 4);
+        buf[0]=CDEG; buf[1]='C'; buf[2]=0;
+        DT(52, 12, buf, C_CY, C_BK, 2);
+    }
 
-    /* Time remaining or configured time */
-    if (dst != SI)
-        FmtH((uint16_t)(rsec/60), buf);
-    else
-        FmtH(stim, buf);
-    DT(94, 12, buf, C_YL, C_BK, 2);
-
-    /* State */
+    /* Time remaining – only if minute changed */
     {
+        uint16_t rm = (dst != SI) ? (uint16_t)(rsec/60) : stim;
+        if (f || rm != p_rm) {
+            p_rm = rm;
+            FmtH(rm, buf);
+            DT(94, 12, buf, C_YL, C_BK, 2);
+        }
+    }
+
+    /* State + hints – only if state changed */
+    if (f || dst != p_ds) {
+        p_ds = dst;
         uint16_t    sc;
         const char *sl;
         switch (dst) {
@@ -382,16 +395,7 @@ static void DrMain(uint8_t f)
             default: sl = "IDLE "; sc = C_GR; break;
         }
         DT(35, 42, sl, sc, C_BK, 3);
-    }
 
-    /* SET:NN°C */
-    buf[0]='S'; buf[1]='E'; buf[2]='T'; buf[3]=':';
-    FmtT(stmp, buf+4);
-    buf[6]=CDEG; buf[7]='C'; buf[8]=0;
-    DT(56, 68, buf, C_GR, C_BK, 1);
-
-    /* Hints */
-    {
         const char *h;
         switch (dst) {
             case SR: h = "1:SET  2:PAUSE"; break;
@@ -400,6 +404,15 @@ static void DrMain(uint8_t f)
         }
         DT(38, 90, h,             C_DK, C_BK, 1);
         DT(50, 102, "HOLD2:STOP",  C_DK, C_BK, 1);
+    }
+
+    /* SET:NN°C – only if changed */
+    if (f || stmp != p_st) {
+        p_st = stmp;
+        buf[0]='S'; buf[1]='E'; buf[2]='T'; buf[3]=':';
+        FmtT(stmp, buf+4);
+        buf[6]=CDEG; buf[7]='C'; buf[8]=0;
+        DT(56, 68, buf, C_GR, C_BK, 1);
     }
 }
 
@@ -576,10 +589,13 @@ void Dryer_Loop(void)
 
     Regulate();
 
-    /* Display (every 250 ms or on demand) */
-    if (frd || (now - td) >= 250U) {
+    /* Display: full redraw on demand, dirty-check only on main screen */
+    if (frd) {
         td = now;
-        DrCur(frd);
+        DrCur(1);
         frd = 0;
+    } else if (scr == SM && (now - td) >= 250U) {
+        td = now;
+        DrMain(0);
     }
 }
