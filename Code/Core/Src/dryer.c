@@ -17,8 +17,8 @@ extern TIM_HandleTypeDef htim17;
 /* ── Display ───────────────────────────────────────────────────── */
 #define XOFF  0
 #define YOFF  0
-#define SW  128
-#define SH  160
+#define SW  160
+#define SH  128
 
 /* RGB-565 colours */
 #define C_BK  0x0000U
@@ -172,11 +172,11 @@ static const uint8_t ic1[] = {
     0xC4,2,0x8A,0xEE,
     0xC5,1,0x0E,
     0x20,0,
-    0x36,1,0xC0,
+    0x36,1,0xA0,
     0x3A,1,0x05,
 };
 static const uint8_t ic2[] = {
-    2, 0x2A,4,0,0,0,0x7F, 0x2B,4,0,0,0,0x9F,
+    2, 0x2A,4,0,0,0,0x9F, 0x2B,4,0,0,0,0x7F,
 };
 static const uint8_t ic3[] = {
     4,
@@ -356,27 +356,21 @@ static void DrMain(uint8_t f)
     if (f) {
         Clr();
         Fill(0, 36, SW, 1, C_DK);
-        Fill(0, 70, SW, 1, C_DK);
+        Fill(0, 80, SW, 1, C_DK);
     }
 
-    /* Air temperature (big) */
+    /* Air temperature (big) + Time side-by-side */
     FmtT(atemp, buf);
-    DT(20, 8, buf, C_CY, C_BK, 3);
+    DT(4, 4, buf, C_CY, C_BK, 4);
     buf[0]=CDEG; buf[1]='C'; buf[2]=0;
-    DT(56, 15, buf, C_CY, C_BK, 2);
+    DT(52, 12, buf, C_CY, C_BK, 2);
 
     /* Time remaining or configured time */
     if (dst != SI)
         FmtH((uint16_t)(rsec/60), buf);
     else
         FmtH(stim, buf);
-    DT(34, 42, buf, C_YL, C_BK, 2);
-
-    /* SET:NN°C */
-    buf[0]='S'; buf[1]='E'; buf[2]='T'; buf[3]=':';
-    FmtT(stmp, buf+4);
-    buf[6]=CDEG; buf[7]='C'; buf[8]=0;
-    DT(28, 75, buf, C_GR, C_BK, 1);
+    DT(94, 12, buf, C_YL, C_BK, 2);
 
     /* State */
     {
@@ -387,8 +381,14 @@ static void DrMain(uint8_t f)
             case SP: sl = "PAUSE"; sc = C_OR; break;
             default: sl = "IDLE "; sc = C_GR; break;
         }
-        DT(34, 90, sl, sc, C_BK, 2);
+        DT(35, 42, sl, sc, C_BK, 3);
     }
+
+    /* SET:NN°C */
+    buf[0]='S'; buf[1]='E'; buf[2]='T'; buf[3]=':';
+    FmtT(stmp, buf+4);
+    buf[6]=CDEG; buf[7]='C'; buf[8]=0;
+    DT(56, 68, buf, C_GR, C_BK, 1);
 
     /* Hints */
     {
@@ -398,8 +398,8 @@ static void DrMain(uint8_t f)
             case SP: h = "1:SET  2:GO   "; break;
             default: h = "1:SET  2:RUN  "; break;
         }
-        DT(4,  140, h,             C_DK, C_BK, 1);
-        DT(16, 150, "HOLD2:STOP",  C_DK, C_BK, 1);
+        DT(38, 90, h,             C_DK, C_BK, 1);
+        DT(50, 102, "HOLD2:STOP",  C_DK, C_BK, 1);
     }
 }
 
@@ -410,16 +410,16 @@ static void DrTemp(uint8_t f)
 
     if (f) {
         Clr();
-        DT(16, 10, "SET TEMP",  C_WH, C_BK, 2);
-        Fill(0, 30, SW, 1, C_DK);
-        DT(4, 120, "1:UP  2:GO",     C_DK, C_BK, 1);
-        DT(4, 135, "HOLD2:CANCEL",   C_DK, C_BK, 1);
+        DT(32, 6, "SET TEMP",  C_WH, C_BK, 2);
+        Fill(0, 24, SW, 1, C_DK);
+        DT(4, 100, "1:UP  2:GO",     C_DK, C_BK, 1);
+        DT(4, 112, "HOLD2:CANCEL",   C_DK, C_BK, 1);
     }
 
     FmtT(ctmp, buf);
-    DT(22, 55, buf, C_CY, C_BK, 4);
+    DT(32, 42, buf, C_CY, C_BK, 4);
     buf[0]=CDEG; buf[1]='C'; buf[2]=0;
-    DT(70, 63, buf, C_CY, C_BK, 2);
+    DT(80, 50, buf, C_CY, C_BK, 2);
 }
 
 /* ── SET TIME ─────────────────────────────────────────────────── */
@@ -429,15 +429,15 @@ static void DrTime(uint8_t f)
 
     if (f) {
         Clr();
-        DT(16, 10, "SET TIME",  C_WH, C_BK, 2);
-        Fill(0, 30, SW, 1, C_DK);
-        DT(4, 120, "1:UP  2:GO",     C_DK, C_BK, 1);
-        DT(4, 135, "HOLD2:CANCEL",   C_DK, C_BK, 1);
+        DT(32, 6, "SET TIME",  C_WH, C_BK, 2);
+        Fill(0, 24, SW, 1, C_DK);
+        DT(4, 100, "1:UP  2:GO",     C_DK, C_BK, 1);
+        DT(4, 112, "HOLD2:CANCEL",   C_DK, C_BK, 1);
     }
 
     FmtH(ctim, buf);
-    DT(19, 55, buf, C_YL, C_BK, 3);
-    DT(109, 62, "H", C_GR, C_BK, 2);
+    DT(22, 42, buf, C_YL, C_BK, 3);
+    DT(112, 49, "H", C_GR, C_BK, 2);
 }
 
 static void DrCur(uint8_t f)
