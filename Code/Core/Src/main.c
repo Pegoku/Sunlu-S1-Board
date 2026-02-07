@@ -163,7 +163,7 @@ static void DrawString(uint8_t x, uint8_t y, const char *str, uint16_t color)
     }
 }
 
-static float ReadNTC(uint32_t adc_channel)
+static int ReadNTC(uint32_t adc_channel)
 {
     ADC_ChannelConfTypeDef sConfig = {0};
     
@@ -197,26 +197,26 @@ static float ReadNTC(uint32_t adc_channel)
         steinhart = 1.0f / steinhart;                          // Invert
         steinhart -= 273.15f;                                  // Convert to Celsius
         
-        return steinhart;
+        return (int)steinhart;
     }
     
     HAL_ADC_Stop(&hadc1);
-    return -999.0f; // Error value
+    return -999; // Error value
 }
 
-static void FloatToString(float value, char *buffer, uint8_t decimals)
+static void IntToString(int value, char *buffer)
 {
-    int32_t int_part = (int32_t)value;
-    float frac_part = value - (float)int_part;
+    int8_t int_part = (int8_t)value;
+    // float frac_part = value - (float)int_part;
     
-    // Handle negative numbers
+    // // Handle negative numbers
     uint8_t idx = 0;
-    if (int_part < 0)
-    {
-        buffer[idx++] = '-';
-        int_part = -int_part;
-        frac_part = -frac_part;
-    }
+    // if (int_part < 0)
+    // {
+    //     buffer[idx++] = '-';
+    //     int_part = -int_part;
+    //     frac_part = -frac_part;
+    // }
     
     // Simple conversion for 0-99
     if (int_part >= 10)
@@ -225,13 +225,13 @@ static void FloatToString(float value, char *buffer, uint8_t decimals)
     }
     buffer[idx++] = '0' + (char)(int_part % 10);
     
-    // Add decimal point and fractional part
-    if (decimals > 0)
-    {
-        buffer[idx++] = '.';
-        int32_t digit = (int32_t)(frac_part * 10.0f);
-        buffer[idx++] = '0' + (char)(digit % 10);
-    }
+    // // Add decimal point and fractional part
+    // if (decimals > 0)
+    // {
+    //     buffer[idx++] = '.';
+    //     int32_t digit = (int32_t)(frac_part * 10.0f);
+    //     buffer[idx++] = '0' + (char)(digit % 10);
+    // }
     
     buffer[idx] = '\0';
 }
@@ -427,30 +427,30 @@ int main(void)
     }
     
     // Read NTC temperatures
-    float air_temp = ReadNTC(ADC_CHANNEL_11);   // airNTC
-    float heat_temp = ReadNTC(ADC_CHANNEL_12);  // heatNTC
+    int air_temp = ReadNTC(ADC_CHANNEL_11);   // airNTC
+    int heat_temp = ReadNTC(ADC_CHANNEL_12);  // heatNTC
     
     // Convert to strings
-    char air_str[8];
-    char heat_str[8];
-    FloatToString(air_temp, air_str, 1);
-    FloatToString(heat_temp, heat_str, 1);
+    char air_str[3];
+    char heat_str[3];
+    IntToString(air_temp, air_str);
+    IntToString(heat_temp, heat_str);
     
-    // Clear temperature display areas (overwrite with black background)
-    ST7735_Select();
-    ST7735_SetWindow(50, 20, 120, 30);
-    for (uint32_t i = 0; i < 71 * 11; i++)
-    {
-        ST7735_Write(0x00, 1);
-        ST7735_Write(0x00, 1);
-    }
-    ST7735_SetWindow(50, 50, 120, 60);
-    for (uint32_t i = 0; i < 71 * 11; i++)
-    {
-        ST7735_Write(0x00, 1);
-        ST7735_Write(0x00, 1);
-    }
-    ST7735_Unselect();
+    // // Clear temperature display areas (overwrite with black background)
+    // ST7735_Select();
+    // ST7735_SetWindow(50, 20, 120, 30);
+    // for (uint32_t i = 0; i < 71 * 11; i++)
+    // {
+    //     ST7735_Write(0x00, 1);
+    //     ST7735_Write(0x00, 1);
+    // }
+    // ST7735_SetWindow(50, 50, 120, 60);
+    // for (uint32_t i = 0; i < 71 * 11; i++)
+    // {
+    //     ST7735_Write(0x00, 1);
+    //     ST7735_Write(0x00, 1);
+    // }
+    // ST7735_Unselect();
     
     // Display temperatures (in cyan/green color)
     DrawString(50, 20, air_str, 0x07FF);   // Cyan
