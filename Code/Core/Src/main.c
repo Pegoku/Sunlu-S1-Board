@@ -32,7 +32,12 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+// ST7735 display address offsets (adjust for your display variant)
+// 1.8" 128x160 AliExpress/eBay: XSTART=0, YSTART=0
+// 1.44" 128x128: XSTART=2, YSTART=3
+// WaveShare 1.8": XSTART=2, YSTART=1
+#define ST7735_XSTART 0
+#define ST7735_YSTART 0
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -74,8 +79,8 @@ static void MX_SPI1_Init(void);
 #define ADC_MAX_VALUE 4095.0f          // 12-bit ADC
 #define VREF 3.3f                       // Reference voltage
 
-// Font for '0'-'9' and '.' (5x7 pixels)
-static const uint8_t Font5x7[11][5] = {
+// Font for '0'-'9' (5x7 pixels)
+static const uint8_t Font5x7[10][5] = {
     {0x3E, 0x45, 0x49, 0x51, 0x3E}, // 0
     {0x00, 0x21, 0x7F, 0x01, 0x00}, // 1
     {0x21, 0x43, 0x45, 0x49, 0x31}, // 2
@@ -85,8 +90,7 @@ static const uint8_t Font5x7[11][5] = {
     {0x1E, 0x29, 0x49, 0x49, 0x06}, // 6
     {0x40, 0x47, 0x48, 0x50, 0x60}, // 7
     {0x36, 0x49, 0x49, 0x49, 0x36}, // 8
-    {0x30, 0x49, 0x49, 0x4A, 0x3C}, // 9
-    {0x00, 0x00, 0x03, 0x00, 0x00}  // . (decimal point)
+    {0x30, 0x49, 0x49, 0x4A, 0x3C}  // 9
 };
 
 
@@ -113,29 +117,21 @@ static void ST7735_SetWindow(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
 {
   ST7735_Write(0x2A, 0); // Column Address Set
   ST7735_Write(0x00, 1);
-  ST7735_Write(x0, 1);
+  ST7735_Write(x0 + ST7735_XSTART, 1);
   ST7735_Write(0x00, 1);
-  ST7735_Write(x1, 1);
+  ST7735_Write(x1 + ST7735_XSTART, 1);
   ST7735_Write(0x2B, 0); // Row Address Set
   ST7735_Write(0x00, 1);
-  ST7735_Write(y0, 1);
+  ST7735_Write(y0 + ST7735_YSTART, 1);
   ST7735_Write(0x00, 1);
-  ST7735_Write(y1, 1);
+  ST7735_Write(y1 + ST7735_YSTART, 1);
   ST7735_Write(0x2C, 0); // RAM Write
 }
 
 static void DrawDigit(uint8_t x, uint8_t y, char digit, uint16_t color)
 {
-    uint8_t index;
-    if (digit == '.')
-    {
-        index = 10;  // Decimal point is at index 10
-    }
-    else
-    {
-        index = (uint8_t)(digit - '0');
-        if (index > 9) return;  // Invalid character
-    }
+    uint8_t index = (uint8_t)(digit - '0');
+    if (index > 9) return;
 
     ST7735_Select();
     ST7735_SetWindow(x, y, (uint8_t)(x + 4), (uint8_t)(y + 6));
@@ -241,27 +237,108 @@ static void FloatToString(float value, char *buffer, uint8_t decimals)
 }
 
 
+static void ST7735_Reset(void)
+{
+  HAL_GPIO_WritePin(ST7735_RES_GPIO_Port, ST7735_RES_Pin, GPIO_PIN_RESET);
+  HAL_Delay(5);
+  HAL_GPIO_WritePin(ST7735_RES_GPIO_Port, ST7735_RES_Pin, GPIO_PIN_SET);
+}
+
+#define DELAY_FLAG 0x80
+
+// Table-driven init commands (from afiskon/stm32-st7735 reference)
+static const uint8_t init_cmds[] = {
+  15,                         // 15 commands in list
+  0x01, DELAY_FLAG,           // SW Reset, delay
+    150,
+  0x11, DELAY_FLAG,           // Sleep Out, delay
+    255,                      // 500ms
+  0xB1, 3,                    // FRMCTR1: frame rate normal
+    0x01, 0x2C, 0x2D,
+  0xB2, 3,                    // FRMCTR2: frame rate idle
+    0x01, 0x2C, 0x2D,
+  0xB3, 6,                    // FRMCTR3: frame rate partial
+    0x01, 0x2C, 0x2D,
+    0x01, 0x2C, 0x2D,
+  0xB4, 1,                    // INVCTR
+    0x07,
+  0xC0, 3,                    // PWCTR1
+    0xA2, 0x02, 0x84,
+  0xC1, 1,                    // PWCTR2
+    0xC5,
+  0xC2, 2,                    // PWCTR3
+    0x0A, 0x00,
+  0xC3, 2,                    // PWCTR4
+    0x8A, 0x2A,
+  0xC4, 2,                    // PWCTR5
+    0x8A, 0xEE,
+  0xC5, 1,                    // VMCTR1
+    0x0E,
+  0x20, 0,                    // INVOFF
+  0x36, 1,                    // MADCTL
+    0xC0,                     // MX|MY (add 0x08 for BGR if colors are swapped)
+  0x3A, 1,                    // COLMOD
+    0x05,                     // 16-bit
+};
+
+// Part 2: address window + inversion for 128x160
+static const uint8_t init_cmds2[] = {
+  2,
+  0x2A, 4,                    // CASET: column 0..127
+    0x00, 0x00, 0x00, 0x7F,
+  0x2B, 4,                    // RASET: row 0..159
+    0x00, 0x00, 0x00, 0x9F,
+};
+
+// Part 3: gamma + display on
+static const uint8_t init_cmds3[] = {
+  4,
+  0xE0, 16,                   // GMCTRP1
+    0x02, 0x1C, 0x07, 0x12,
+    0x37, 0x32, 0x29, 0x2D,
+    0x29, 0x25, 0x2B, 0x39,
+    0x00, 0x01, 0x03, 0x10,
+  0xE1, 16,                   // GMCTRN1
+    0x03, 0x1D, 0x07, 0x06,
+    0x2E, 0x2C, 0x29, 0x2D,
+    0x2E, 0x2E, 0x37, 0x3F,
+    0x00, 0x00, 0x02, 0x10,
+  0x13, DELAY_FLAG,           // NORON
+    10,
+  0x29, DELAY_FLAG,           // DISPON
+    100,
+};
+
+static void ST7735_ExecuteCommands(const uint8_t *addr)
+{
+  uint8_t numCmds = *addr++;
+  while (numCmds--) {
+    uint8_t cmd = *addr++;
+    ST7735_Write(cmd, 0);
+
+    uint8_t numArgs = *addr++;
+    uint8_t hasDelay = numArgs & DELAY_FLAG;
+    numArgs &= ~DELAY_FLAG;
+
+    while (numArgs--) {
+      ST7735_Write(*addr++, 1);
+    }
+
+    if (hasDelay) {
+      uint16_t ms = *addr++;
+      if (ms == 255) ms = 500;
+      HAL_Delay(ms);
+    }
+  }
+}
+
 static void ST7735_Init(void)
 {
-  HAL_Delay(10);
   ST7735_Select();
-
-  ST7735_Write(0x01, 0); // SW Reset
-  HAL_Delay(150);
-  ST7735_Write(0x11, 0); // Sleep Out
-  HAL_Delay(150);
-
-  ST7735_Write(0x3A, 0); // COLMOD
-  ST7735_Write(0x05, 1); // 16-bit color
-
-  ST7735_Write(0x36, 0); // MADCTL
-  ST7735_Write(0x00, 1); // Row/Column order
-
-  ST7735_Write(0x21, 0); // INVON (many ST7735 need inversion)
-
-  ST7735_Write(0x29, 0); // Display On
-  HAL_Delay(10);
-
+  ST7735_Reset();
+  ST7735_ExecuteCommands(init_cmds);
+  ST7735_ExecuteCommands(init_cmds2);
+  ST7735_ExecuteCommands(init_cmds3);
   ST7735_Unselect();
 }
 
@@ -356,7 +433,7 @@ int main(void)
     // Convert to strings
     char air_str[16];
     char heat_str[16];
-    FloatToString(air_temp, air_str, 1);
+    FloatToString(20.10f, air_str, 1);
     FloatToString(heat_temp, heat_str, 1);
     
     // Clear temperature display areas (overwrite with black background)
@@ -378,6 +455,8 @@ int main(void)
     // Display temperatures (in cyan/green color)
     DrawString(50, 20, air_str, 0x07FF);   // Cyan
     DrawString(50, 50, heat_str, 0x07E0);  // Green
+   
+    HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
 
     HAL_Delay(500);
 
@@ -697,6 +776,35 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
+
+  // Enable GPIOC clock for RES pin (PC14)
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+
+  // Set initial output levels before configuring pins
+  HAL_GPIO_WritePin(ST7735_CS_GPIO_Port, ST7735_CS_Pin, GPIO_PIN_SET);   // CS high (deselected)
+  HAL_GPIO_WritePin(ST7735_DC_GPIO_Port, ST7735_DC_Pin, GPIO_PIN_RESET); // DC low
+  HAL_GPIO_WritePin(ST7735_RES_GPIO_Port, ST7735_RES_Pin, GPIO_PIN_SET); // RES high (not in reset)
+
+  // Configure CS pin (PB7) as output push-pull
+  GPIO_InitStruct.Pin = ST7735_CS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(ST7735_CS_GPIO_Port, &GPIO_InitStruct);
+
+  // Configure DC/A0 pin (PA3) as output push-pull
+  GPIO_InitStruct.Pin = ST7735_DC_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(ST7735_DC_GPIO_Port, &GPIO_InitStruct);
+
+  // Configure RES pin (PC14) as output push-pull
+  GPIO_InitStruct.Pin = ST7735_RES_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(ST7735_RES_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE END MX_GPIO_Init_2 */
 }

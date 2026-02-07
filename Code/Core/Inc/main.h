@@ -59,12 +59,18 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define CS_Pin GPIO_PIN_7
+#define CS_GPIO_Port GPIOB
+#define RES_Pin GPIO_PIN_14
+#define RES_GPIO_Port GPIOC
 #define heater_Pin GPIO_PIN_0
 #define heater_GPIO_Port GPIOA
 #define fan_Pin GPIO_PIN_1
 #define fan_GPIO_Port GPIOA
 #define led_Pin GPIO_PIN_2
 #define led_GPIO_Port GPIOA
+#define A0_Pin GPIO_PIN_3
+#define A0_GPIO_Port GPIOA
 #define b1_Pin GPIO_PIN_4
 #define b1_GPIO_Port GPIOA
 #define b2_Pin GPIO_PIN_5
@@ -82,6 +88,8 @@ void Error_Handler(void);
 #define ST7735_CS_GPIO_Port GPIOB
 #define ST7735_DC_Pin GPIO_PIN_3
 #define ST7735_DC_GPIO_Port GPIOA
+#define ST7735_RES_Pin RES_Pin
+#define ST7735_RES_GPIO_Port RES_GPIO_Port
 #define ST7735_BL_Pin BL_Pin
 #define ST7735_BL_GPIO_Port BL_GPIO_Port
 
