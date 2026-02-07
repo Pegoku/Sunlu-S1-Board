@@ -134,6 +134,8 @@ static uint16_t p_rm = 0xFFFF;
 static int16_t  p_st = -1;
 static DS       p_ds = SI;
 
+static uint8_t  dir  = 0;   /* 0 = UP, 1 = DOWN */
+
 /* ══════════════════════════════════════════════════════════════════
  *  ST7735  LOW-LEVEL
  * ══════════════════════════════════════════════════════════════════ */
@@ -425,7 +427,6 @@ static void DrTemp(uint8_t f)
         Clr();
         DT(32, 6, "SET TEMP",  C_WH, C_BK, 2);
         Fill(0, 24, SW, 1, C_DK);
-        DT(4, 100, "1:UP  2:GO",     C_DK, C_BK, 1);
         DT(4, 112, "HOLD2:CANCEL",   C_DK, C_BK, 1);
     }
 
@@ -433,6 +434,7 @@ static void DrTemp(uint8_t f)
     DT(32, 42, buf, C_CY, C_BK, 4);
     buf[0]=CDEG; buf[1]='C'; buf[2]=0;
     DT(80, 50, buf, C_CY, C_BK, 2);
+    DT(4, 100, dir ? "1:DN  2:GO  H1:UP" : "1:UP  2:GO  H1:DN", C_DK, C_BK, 1);
 }
 
 /* ── SET TIME ─────────────────────────────────────────────────── */
@@ -444,13 +446,13 @@ static void DrTime(uint8_t f)
         Clr();
         DT(32, 6, "SET TIME",  C_WH, C_BK, 2);
         Fill(0, 24, SW, 1, C_DK);
-        DT(4, 100, "1:UP  2:GO",     C_DK, C_BK, 1);
         DT(4, 112, "HOLD2:CANCEL",   C_DK, C_BK, 1);
     }
 
     FmtH(ctim, buf);
     DT(22, 42, buf, C_YL, C_BK, 3);
     DT(112, 49, "H", C_GR, C_BK, 2);
+    DT(4, 100, dir ? "1:DN  2:GO  H1:UP" : "1:UP  2:GO  H1:DN", C_DK, C_BK, 1);
 }
 
 static void DrCur(uint8_t f)
@@ -504,34 +506,38 @@ static void Input(BE e1, BE e2)
 
     case SC:
         if (e1 == BS) {
-            ctmp++;
-            if (ctmp > TMAX) ctmp = TMIN;
+            if (dir) { ctmp--; if (ctmp < TMIN) ctmp = TMAX; }
+            else     { ctmp++; if (ctmp > TMAX) ctmp = TMIN; }
             DrTemp(0);
         }
+        if (e1 == BL) { dir ^= 1; DrTemp(0); }
         if (e2 == BS) {
             stmp = ctmp;
             ctim = stim;
+            dir  = 0;
             scr  = SD;
             frd  = 1;
         }
-        if (e2 == BL) { scr = SM; frd = 1; }
+        if (e2 == BL) { dir = 0; scr = SM; frd = 1; }
         break;
 
     case SD:
         if (e1 == BS) {
-            ctim += MSTP;
-            if (ctim > MMAX) ctim = MMIN;
+            if (dir) { ctim = (ctim <= MMIN) ? MMAX : ctim - MSTP; }
+            else     { ctim = (ctim >= MMAX) ? MMIN : ctim + MSTP; }
             DrTime(0);
         }
+        if (e1 == BL) { dir ^= 1; DrTime(0); }
         if (e2 == BS) {
             stim = ctim;
             rsec = (uint32_t)stim * 60U;
             dst  = SR;
             ts   = HAL_GetTick();
+            dir  = 0;
             scr  = SM;
             frd  = 1;
         }
-        if (e2 == BL) { scr = SM; frd = 1; }
+        if (e2 == BL) { dir = 0; scr = SM; frd = 1; }
         break;
     }
 }
