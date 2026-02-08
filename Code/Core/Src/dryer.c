@@ -340,7 +340,7 @@ static void Regulate(void)
         HAL_GPIO_WritePin(led_GPIO_Port, led_Pin, GPIO_PIN_RESET);
         return;
     }
-    if (htemp > TSAFE) { HSet(0); FSet(65535); return; }
+    if (htemp > TSAFE || htemp > stmp + 5) { HSet(0); FSet(65535); return; }
     int16_t e = stmp - atemp;
     if      (e > 10) HSet(65535);
     else if (e > 0)  HSet((uint16_t)((uint32_t)e * 6553U));
