@@ -149,6 +149,9 @@ static void Wr(uint8_t d, uint8_t dc)
     HAL_SPI_Transmit(&hspi1, &d, 1, HAL_MAX_DELAY);
 }
 
+#define SPIBUF 128
+static uint8_t sbuf[SPIBUF];
+
 static void Win(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1)
 {
     Wr(0x2A,0); Wr(0,1); Wr(x0+XOFF,1); Wr(0,1); Wr(x1+XOFF,1);
@@ -224,7 +227,14 @@ static void Fill(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint16_t c)
     Sel();
     Win(x, y, (uint8_t)(x+w-1), (uint8_t)(y+h-1));
     uint8_t hi = (uint8_t)(c>>8), lo = (uint8_t)c;
-    for (uint32_t i = 0; i < (uint32_t)w*h; i++) { Wr(hi,1); Wr(lo,1); }
+    for (uint16_t i = 0; i < SPIBUF; i += 2) { sbuf[i] = hi; sbuf[i+1] = lo; }
+    HAL_GPIO_WritePin(ST7735_DC_GPIO_Port, ST7735_DC_Pin, GPIO_PIN_SET);
+    uint32_t total = (uint32_t)w * h * 2U;
+    while (total > 0) {
+        uint16_t ck = (total > SPIBUF) ? SPIBUF : (uint16_t)total;
+        HAL_SPI_Transmit(&hspi1, sbuf, ck, HAL_MAX_DELAY);
+        total -= ck;
+    }
     Unsel();
 }
 
@@ -233,16 +243,21 @@ static void Clr(void) { Fill(0,0,SW,SH,C_BK); }
 static void DC(uint8_t x, uint8_t y, char c, uint16_t fg, uint16_t bg, uint8_t s)
 {
     const uint8_t *gl = GF[(uint8_t)gidx(c)];
+    uint8_t fh=(uint8_t)(fg>>8), fl=(uint8_t)fg;
+    uint8_t bh=(uint8_t)(bg>>8), bl=(uint8_t)bg;
     Sel();
     Win(x, y, (uint8_t)(x+6*s-1), (uint8_t)(y+7*s-1));
-    for (uint8_t r = 0; r < 7; r++)
+    HAL_GPIO_WritePin(ST7735_DC_GPIO_Port, ST7735_DC_Pin, GPIO_PIN_SET);
+    for (uint8_t r = 0; r < 7; r++) {
+        uint16_t p = 0;
+        for (uint8_t col = 0; col < 6; col++) {
+            uint8_t on = (col < 5 && (gl[col] & (1U<<r))) ? 1 : 0;
+            uint8_t ph = on ? fh : bh, pl = on ? fl : bl;
+            for (uint8_t sx = 0; sx < s; sx++) { sbuf[p++] = ph; sbuf[p++] = pl; }
+        }
         for (uint8_t sy = 0; sy < s; sy++)
-            for (uint8_t col = 0; col < 6; col++) {
-                uint16_t px = (col < 5 && (gl[col] & (1U<<r))) ? fg : bg;
-                for (uint8_t sx = 0; sx < s; sx++) {
-                    Wr((uint8_t)(px>>8),1); Wr((uint8_t)px,1);
-                }
-            }
+            HAL_SPI_Transmit(&hspi1, sbuf, p, HAL_MAX_DELAY);
+    }
     Unsel();
 }
 
