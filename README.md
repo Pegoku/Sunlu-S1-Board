@@ -81,6 +81,13 @@ Or use the VS Code task "Build and Flash" if configured.
 - **Middle**: Current state (IDLE/RUN/PAUSE), target temperature setting
 - **Bottom**: Action hints: BTN1=set, BTN2=start/pause/resume, hold BTN2=stop/reset
 
+<details>
+<summary>Example Main Screen</summary>
+
+![](https://blueprint.hackclub.com/user-attachments/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTAwNDI5LCJwdXIiOiJibG9iX2lkIn19--8746a7b55e983f4c0fdec9bc8e279b0da73ccb92/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsyMDAwLDIwMDBdLCJjb252ZXJ0Ijoid2VicCIsInNhdmVyIjp7InF1YWxpdHkiOjgwLCJzdHJpcCI6dHJ1ZX19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--15ca3815f01a5683e19ea0585d2eef9af9e441d7/PXL_20260208_110426292.MP%20(1).jpg)
+
+</details>
+
 ### Set Temperature Screen
 - **Value**: Current target in °C
 - **Controls**: 
@@ -89,9 +96,22 @@ Or use the VS Code task "Build and Flash" if configured.
   - **Short BTN2**: confirm & advance to Set Time
   - **Long BTN2**: cancel & return to Main
 
+<details>
+<summary>Example Set Temp Screen</summary>
+
+![](https://blueprint.hackclub.com/user-attachments/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTAwNDI4LCJwdXIiOiJibG9iX2lkIn19--2ed9d55c6d9b7077e4530b978b0fad8c62206d09/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsyMDAwLDIwMDBdLCJjb252ZXJ0Ijoid2VicCIsInNhdmVyIjp7InF1YWxpdHkiOjgwLCJzdHJpcCI6dHJ1ZX19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--15ca3815f01a5683e19ea0585d2eef9af9e441d7/PXL_20260208_110402166.MP.jpg)
+</details>
+
 ### Set Time Screen
 - **Value**: Target drying time in HH:MM format
 - **Controls**: Same as Set Temp (BTN1 for ±, long BTN1 to toggle, BTN2 to confirm/cancel)
+
+<details>
+<summary>Example Set Time Screen</summary>
+
+![](https://blueprint.hackclub.com/user-attachments/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTAwNDI3LCJwdXIiOiJibG9iX2lkIn19--e19a54ca3e86a618e632d00cc75f3bee663c88d3/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsyMDAwLDIwMDBdLCJjb252ZXJ0Ijoid2VicCIsInNhdmVyIjp7InF1YWxpdHkiOjgwLCJzdHJpcCI6dHJ1ZX19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--15ca3815f01a5683e19ea0585d2eef9af9e441d7/PXL_20260208_110415232%20(1).jpg)
+</details>
+
 
 ### Operation
 1. Press BTN1 on Main Screen → Set Temperature
