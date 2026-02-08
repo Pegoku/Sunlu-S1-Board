@@ -174,12 +174,11 @@ See [BOM.csv](BOM.csv) for the complete component list and part numbers.
 
 ## License
 
-This work is licensed under **Creative Commons Attribution-NonCommercial 4.0 International** ([CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)).
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial 4.0 International License][cc-by-nc].
 
-You are free to:
-- **Share** — copy and redistribute the material
-- **Adapt** — remix, transform, and build upon the material
+[![CC BY-NC 4.0][cc-by-nc-image]][cc-by-nc]
 
-Under the following terms:
-- **Attribution** — give appropriate credit and link to the license
-- **NonCommercial** — may not use for commercial purposes
+[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
+[cc-by-nc-image]: https://licensebuttons.net/l/by-nc/4.0/88x31.png
+[cc-by-nc-shield]: https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg
