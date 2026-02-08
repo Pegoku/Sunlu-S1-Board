@@ -61,7 +61,7 @@ Requires `arm-none-eabi-gcc`, `cmake`, and `cube-cmake` installed.
 
 ```sh
 cd Code
-cmake --preset debug
+cmake --preset Debug
 cmake --build build/Debug --target Code
 ```
 
