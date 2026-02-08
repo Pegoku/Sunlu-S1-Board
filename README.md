@@ -119,7 +119,7 @@ Or use the VS Code task "Build and Flash" if configured.
 | Heater NTC | PA12 | ADC_CH12 | 100k thermistor, 3.3 V divider |
 | LED | PA2 | GPIO | Status indicator (on during RUN/PAUSE) |
 
-See [Core/Inc/main.h](Core/Inc/main.h) for full pin configuration.
+See [Code/Core/Inc/main.h](Code/Core/Inc/main.h) for full pin configuration.
 
 ## Technical Specs
 
@@ -163,10 +163,10 @@ See [Core/Inc/main.h](Core/Inc/main.h) for full pin configuration.
 ```
 
 ### Modifying the Firmware
-- Temperature limits: edit `TMIN`, `TMAX`, `TDEF` in [Core/Src/dryer.c](Core/Src/dryer.c)
+- Temperature limits: edit `TMIN`, `TMAX`, `TDEF` in [Code/Core/Src/dryer.c](Code/Core/Src/dryer.c)
 - Time limits: edit `MMIN`, `MMAX`, `MDEF`
 - Safety margin: change `stmp + 5` in `Regulate()` function
-- NTC calibration: update `ntc[]` lookup table in [Core/Src/dryer.c](Core/Src/dryer.c)
+- NTC calibration: update `ntc[]` lookup table in [Code/Core/Src/dryer.c](Code/Core/Src/dryer.c)
 
 ## Bill of Materials
 
