@@ -29,7 +29,7 @@ Final build
 
 ![](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjYwNTIsInB1ciI6ImJsb2JfaWQifX0=--2d029e8420b1dd132e7354eb3dd6a570f5db8566/image.png)
 
-![](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjYwNTMsInB1ciI6ImJsb2JfaWQifX0=--1047a7ac75af647d70a90727f570555daae576b7/image.png)
+![](https://blueprint.hackclub.com/user-attachments/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTAwNzk4LCJwdXIiOiJibG9iX2lkIn19--9febcd7340996f381db9246e45cf2c0a945b4a45/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlsyMDAwLDIwMDBdLCJjb252ZXJ0Ijoid2VicCIsInNhdmVyIjp7InF1YWxpdHkiOjgwLCJzdHJpcCI6dHJ1ZX19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0f85faa91c373105a0f317054e965c1f47e93a37/image.png)
 </details>
 
 ## Features
